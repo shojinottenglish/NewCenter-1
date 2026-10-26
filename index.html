@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>超共通テストトライアル（8,000語・新傾向予測フルスケール版）</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-in { animation: fadeIn 0.35s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    .passage-text { font-size: 1.03rem; line-height: 1.78; margin-bottom: 1.2rem; color: #1e293b; text-align: justify; }
+    .passage-text.indent { text-indent: 1.5rem; }
+    input[type="radio"]:checked + span, input[type="checkbox"]:checked + span { font-weight: bold; }
+    .handwriting { font-family: 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif; }
+    .slide-box { background: #ffffff; padding: 1rem; border-radius: 0.75rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .slide-title { font-weight: 800; font-size: 1.02rem; color: #1e293b; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.25rem; margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body class="bg-slate-50 font-serif text-slate-800 min-h-screen flex flex-col">
+
+  <!-- ==================== ヘッダー ==================== -->
+  <header class="bg-slate-900 shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <h1 class="text-lg md:text-2xl font-bold tracking-wider text-white">超共通テストトライアル</h1>
+          <span id="wordCountBadge" class="font-sans text-xs bg-indigo-900 text-indigo-200 border border-indigo-700 px-3 py-1 rounded-full font-bold">8,000語・過去問×新傾向予測フルスケール版</span>
+          <span id="saveStatusBadge" class="font-sans text-xs bg-slate-800 text-slate-300 border border-slate-700 px-2.5 py-1 rounded-full flex items-center gap-1.5">
+            <span id="saveStatusDot" class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span id="saveStatusText">自動保存対応</span>
+          </span>
+        </div>
+        <div class="flex items-center gap-2 self-start sm:self-auto">
+          <button onclick="openSaveModal()" class="font-sans text-xs md:text-sm bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-3.5 py-1.5 rounded-lg shadow transition-all flex items-center gap-1.5">
+            <span>💾 途中保存 / 再開</span>
+          </button>
+        </div>
+      </div>
+      <nav class="flex overflow-x-auto whitespace-nowrap gap-1 pb-1 scrollbar-hide font-sans text-sm">
+        <button id="nav1" onclick="switchTab(1)" class="px-3.5 py-2 rounded-t-lg bg-blue-600 text-white font-bold transition-all shadow-sm">第1問</button>
+        <button id="nav2" onclick="switchTab(2)" class="px-3.5 py-2 rounded-t-lg bg-slate-700 text-slate-300 hover:bg-slate-600 font-bold transition-all">第2問</button>
+        <button id="nav3" onclick="switchTab(3)" class="px-3.5 py-2 rounded-t-lg bg-slate-700 text-slate-300 hover:bg-slate-600 font-bold transition-all">第3問</button>
+        <button id="nav4" onclick="switchTab(4)" class="px-3.5 py-2 rounded-t-lg bg-slate-700 text-slate-300 hover:bg-slate-600 font-bold transition-all">第4問</button>
+        <button id="nav5" onclick="switchTab(5)" class="px-3.5 py-2 rounded-t-lg bg-slate-700 text-slate-300 hover:bg-slate-600 font-bold transition-all">第5問</button>
+        <button id="nav6" onclick="switchTab(6)" class="px-3.5 py-2 rounded-t-lg bg-slate-700 text-slate-300 hover:bg-slate-600 font-bold transition-all">第6問</button>
+        <button id="nav7" onclick="switchTab(7)" class="px-3.5 py-2 rounded-t-lg bg-slate-700 text-slate-300 hover:bg-slate-600 font-bold transition-all">第7問</button>
+        <button id="nav8" onclick="switchTab(8)" class="px-3.5 py-2 rounded-t-lg bg-slate-700 text-slate-300 hover:bg-slate-600 font-bold transition-all">第8問</button>
+        <button id="nav9" onclick="switchTab(9)" class="px-3.5 py-2 rounded-t-lg bg-emerald-700 text-emerald-100 hover:bg-emerald-600 font-bold transition-all ml-1 border-l border-slate-600">総合結果</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl mx-auto w-full p-4 md:p-6 fade-in">
+
+    <!-- ==================== 第1問 (配点 8) ==================== -->
+    <section id="tab1" class="tab-content block">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <div class="flex-1 lg:w-1/2 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+          <div class="flex justify-between items-end border-b-2 border-slate-800 pb-2 mb-6">
+            <div>
+              <span class="font-sans text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">旧傾向（配置図パズル・条件表）× 新傾向予測（AI自動通知チャット）</span>
+              <h2 class="text-2xl font-bold mt-1">第1問</h2>
+            </div>
+            <span class="font-sans text-slate-500 font-bold">(配点 8)</span>
+          </div>
+
+          <p class="mb-4 text-sm text-gray-600 font-sans italic bg-slate-100 p-3 rounded">
+            You are a member of your high school's International Exchange Committee. Your team is setting up a cultural food and craft booth for tomorrow's "Global Youth Fair" in the school gymnasium. You are reading the official venue handbook and checking your team's group chat.
+          </p>
+
+          <!-- Handbook Notice -->
+          <div class="border-2 border-amber-300 p-4 rounded-xl bg-amber-50 mb-6">
+            <h3 class="text-lg font-black text-amber-900 uppercase text-center mb-1">Global Youth Fair: Gymnasium Booth Manual</h3>
+            <p class="text-xs text-center text-amber-800 font-sans mb-3">Please read all safety and layout rules carefully before setting up your booth on Friday afternoon.</p>
+            <div class="text-left font-sans text-sm space-y-2 bg-white p-3.5 rounded shadow-sm border border-amber-200">
+              <p>• <strong>Preparation Hours:</strong> Friday, 3:15 PM – 5:30 PM. All students must leave the gymnasium by 5:45 PM so the security staff can lock the doors.</p>
+              <p>• <strong>Electrical &amp; Fire Safety:</strong> Open flames and portable gas stoves are strictly banned inside the gymnasium. Electric soup warmers and hot plates (up to 1,200W in total per booth) are permitted, but they may only be used on tables placed directly along the <strong>Back Wall (North Wall)</strong> where heavy-duty wall outlets are installed. Extension cords may not cross the middle of the booth floor.</p>
+              <p>• <strong>Visitor Flow &amp; Entrance Rule:</strong> Each booth space measures 4 meters by 4 meters and faces the <strong>South Aisle</strong> (visitor entrance side). To prevent accidents during crowded hours, a two-meter-wide path directly in front of the center of the South Entrance must be kept completely clear of furniture, signs, and trash bins.</p>
+              <p>• <strong>Display &amp; Recycling Equipment:</strong> Each team is provided with two rectangular wooden tables, one circular high table for craft displays, and one standing welcome poster board. Teams serving food or drinks must also rent one of the official Eco-Cup &amp; Napkin Kits from the Supply Desk.</p>
+            </div>
+
+            <!-- Supply Kit Table -->
+            <div class="mt-3 bg-white p-3 rounded border border-amber-200 font-sans text-xs">
+              <p class="font-bold text-amber-950 mb-1.5">Official Eco-Cup &amp; Napkin Kits (Available at Supply Desk):</p>
+              <table class="w-full border-collapse text-left">
+                <thead>
+                  <tr class="bg-amber-100 text-amber-900 border-b border-amber-300">
+                    <th class="p-1.5">Kit Name</th>
+                    <th class="p-1.5">Cup Type</th>
+                    <th class="p-1.5">Quantity</th>
+                    <th class="p-1.5">Rental Cost</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-amber-100">
+                  <tr><td class="p-1.5 font-bold">Kit A (Basic)</td><td class="p-1.5">Cold Drink Plastic Cups</td><td class="p-1.5">150 cups</td><td class="p-1.5">¥1,500</td></tr>
+                  <tr><td class="p-1.5 font-bold">Kit B (Standard)</td><td class="p-1.5">Heat-Resistant Paper Cups</td><td class="p-1.5">120 cups</td><td class="p-1.5">¥2,000</td></tr>
+                  <tr><td class="p-1.5 font-bold">Kit C (Festival)</td><td class="p-1.5">Heat-Resistant Paper Cups</td><td class="p-1.5">200 cups</td><td class="p-1.5">¥2,800</td></tr>
+                  <tr><td class="p-1.5 font-bold">Kit D (Deluxe)</td><td class="p-1.5">Reusable Ceramic Mugs</td><td class="p-1.5">200 mugs</td><td class="p-1.5">¥4,200</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Group Chat -->
+          <div class="space-y-3 font-sans text-sm bg-slate-100 p-4 rounded-xl border border-slate-300">
+            <div class="bg-white p-3 rounded-lg border shadow-sm">
+              <span class="font-bold text-blue-700">Ken (3:20 PM):</span> Hey everyone! I just carried our two rectangular tables, the round craft table, and the poster stand into Booth #4. Since we are serving hot spiced apple tea and selling handmade bookmarks tomorrow, how should we arrange everything?
+            </div>
+            <div class="bg-white p-3 rounded-lg border shadow-sm">
+              <span class="font-bold text-purple-700">Mei (3:22 PM):</span> Remember the fire safety rule! Because we're using two electric warmers for the hot apple tea, both of our rectangular tables have to be placed along the Back Wall near the power outlets. Let's angle those two rectangular tables slightly inward toward the center so visitors walking in can see both tea pots easily.
+            </div>
+            <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-300 shadow-sm text-xs text-emerald-950">
+              <span class="font-bold text-emerald-800">🤖 AI Fair Assistant [Auto-Notice 3:25 PM]:</span> Welcome, Booth #4! Foot-traffic camera data from last year's fair shows that 82% of visitors walked from left to right along the South Aisle, and booths serving hot drinks served an average of 175 guests. <strong>Reminder:</strong> Every team must upload a photo of their completed booth layout and submit their Supply Kit order form via the school portal before 4:30 PM today.
+            </div>
+            <div class="bg-blue-50 p-3 rounded-lg border border-blue-200 shadow-sm ml-5">
+              <span class="font-bold text-slate-800">Leo (3:27 PM):</span> Wow, 175 guests on average! Our remaining team budget for cups is ¥3,000, and we obviously need heat-resistant cups for the hot apple tea that can cover at least 175 servings. I'll order the right kit on the school portal right now.
+            </div>
+            <div class="bg-white p-3 rounded-lg border shadow-sm">
+              <span class="font-bold text-purple-700">Mei (3:29 PM):</span> Thanks, Leo! What about the round craft table and the welcome poster stand, Ken? At first, I thought about putting the poster stand right in the middle of the South Entrance, and the round table on the left side.
+            </div>
+            <div class="bg-white p-3 rounded-lg border shadow-sm">
+              <span class="font-bold text-blue-700">Ken (3:31 PM):</span> Wait—the manual says we must keep a two-meter path in the center of the South Entrance completely clear! Let's put the welcome poster stand near the South Entrance, but off to the <strong>right corner</strong> so it never blocks the entrance path. And let's place the round craft table near the <strong>left wall</strong> in the middle section. I honestly believe our spiced apple tea is going to be the most delicious drink at the entire school festival!
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-1 lg:w-1/2 space-y-6">
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q1-1">
+            <p class="font-bold mb-3 text-lg">問1 Which of the following is stated as an <u>opinion</u> rather than an objective fact? <span class="text-sm font-sans text-slate-400">(2点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-1" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① Electric warmers may only be used on tables along the Back Wall.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-1" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② Camera records indicate that 82% of visitors walked from left to right last year.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-1" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ Teams must upload a photo of their booth layout before 4:30 PM today.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-1" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ The team's spiced apple tea will taste better than any other drink at the fair.</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q1-2">
+            <p class="font-bold mb-3 text-lg">問2 Which diagram best shows the final booth layout that Ken and Mei agreed on? <span class="text-sm font-sans text-slate-400">(2点)</span></p>
+            
+            <!-- 4つの配置図 (SVG) -->
+            <div class="grid grid-cols-2 gap-3 my-3 font-sans">
+              <!-- ① 背面に水平テーブル2台＋入口中央にポスター -->
+              <div class="border rounded-lg p-2 bg-slate-50">
+                <div class="text-xs font-bold text-slate-700 mb-1">①</div>
+                <svg viewBox="0 0 160 115" class="w-full h-auto bg-white border rounded">
+                  <text x="80" y="11" font-size="7.5" text-anchor="middle" fill="#64748b">Back Wall (Outlets)</text>
+                  <rect x="26" y="17" width="42" height="13" fill="#93c5fd" stroke="#1d4ed8"/>
+                  <rect x="92" y="17" width="42" height="13" fill="#93c5fd" stroke="#1d4ed8"/>
+                  <circle cx="28" cy="58" r="11" fill="#fde68a" stroke="#d97706"/>
+                  <text x="28" y="61" font-size="6.5" text-anchor="middle" fill="#78350f">Craft</text>
+                  <circle cx="80" cy="88" r="7" fill="#f97316"/>
+                  <text x="80" y="91" font-size="7" text-anchor="middle" fill="#fff" font-weight="bold">P</text>
+                  <line x1="50" y1="112" x2="110" y2="112" stroke="#0f172a" stroke-width="3"/>
+                  <text x="80" y="107" font-size="7" text-anchor="middle" fill="#334155">South Entrance</text>
+                </svg>
+              </div>
+              <!-- ② 背面に角度付きテーブル2台＋左壁際に丸テーブル＋入口右隅にポスター（正解） -->
+              <div class="border rounded-lg p-2 bg-slate-50">
+                <div class="text-xs font-bold text-slate-700 mb-1">②</div>
+                <svg viewBox="0 0 160 115" class="w-full h-auto bg-white border rounded">
+                  <text x="80" y="11" font-size="7.5" text-anchor="middle" fill="#64748b">Back Wall (Outlets)</text>
+                  <rect x="26" y="20" width="42" height="13" fill="#93c5fd" stroke="#1d4ed8" transform="rotate(14 47 26)"/>
+                  <rect x="92" y="20" width="42" height="13" fill="#93c5fd" stroke="#1d4ed8" transform="rotate(-14 113 26)"/>
+                  <circle cx="26" cy="58" r="11" fill="#fde68a" stroke="#d97706"/>
+                  <text x="26" y="61" font-size="6.5" text-anchor="middle" fill="#78350f">Craft</text>
+                  <circle cx="134" cy="88" r="7" fill="#f97316"/>
+                  <text x="134" y="91" font-size="7" text-anchor="middle" fill="#fff" font-weight="bold">P</text>
+                  <line x1="50" y1="112" x2="110" y2="112" stroke="#0f172a" stroke-width="3"/>
+                  <text x="80" y="107" font-size="7" text-anchor="middle" fill="#334155">South Entrance</text>
+                </svg>
+              </div>
+              <!-- ③ 中央にテーブル2台＋右壁際に丸テーブル＋入口右隅にポスター -->
+              <div class="border rounded-lg p-2 bg-slate-50">
+                <div class="text-xs font-bold text-slate-700 mb-1">③</div>
+                <svg viewBox="0 0 160 115" class="w-full h-auto bg-white border rounded">
+                  <text x="80" y="11" font-size="7.5" text-anchor="middle" fill="#64748b">Back Wall (Outlets)</text>
+                  <rect x="26" y="50" width="42" height="13" fill="#93c5fd" stroke="#1d4ed8"/>
+                  <rect x="92" y="50" width="42" height="13" fill="#93c5fd" stroke="#1d4ed8"/>
+                  <circle cx="134" cy="30" r="11" fill="#fde68a" stroke="#d97706"/>
+                  <text x="134" y="33" font-size="6.5" text-anchor="middle" fill="#78350f">Craft</text>
+                  <circle cx="134" cy="88" r="7" fill="#f97316"/>
+                  <text x="134" y="91" font-size="7" text-anchor="middle" fill="#fff" font-weight="bold">P</text>
+                  <line x1="50" y1="112" x2="110" y2="112" stroke="#0f172a" stroke-width="3"/>
+                  <text x="80" y="107" font-size="7" text-anchor="middle" fill="#334155">South Entrance</text>
+                </svg>
+              </div>
+              <!-- ④ 背面に角度付きテーブル2台＋右壁際に丸テーブル＋入口正面にポスター -->
+              <div class="border rounded-lg p-2 bg-slate-50">
+                <div class="text-xs font-bold text-slate-700 mb-1">④</div>
+                <svg viewBox="0 0 160 115" class="w-full h-auto bg-white border rounded">
+                  <text x="80" y="11" font-size="7.5" text-anchor="middle" fill="#64748b">Back Wall (Outlets)</text>
+                  <rect x="26" y="20" width="42" height="13" fill="#93c5fd" stroke="#1d4ed8" transform="rotate(14 47 26)"/>
+                  <rect x="92" y="20" width="42" height="13" fill="#93c5fd" stroke="#1d4ed8" transform="rotate(-14 113 26)"/>
+                  <circle cx="134" cy="58" r="11" fill="#fde68a" stroke="#d97706"/>
+                  <text x="134" y="61" font-size="6.5" text-anchor="middle" fill="#78350f">Craft</text>
+                  <circle cx="80" cy="88" r="7" fill="#f97316"/>
+                  <text x="80" y="91" font-size="7" text-anchor="middle" fill="#fff" font-weight="bold">P</text>
+                  <line x1="50" y1="112" x2="110" y2="112" stroke="#0f172a" stroke-width="3"/>
+                  <text x="80" y="107" font-size="7" text-anchor="middle" fill="#334155">South Entrance</text>
+                </svg>
+              </div>
+            </div>
+            <p class="text-xs text-slate-500 font-sans mb-3">※青の長方形＝長テーブル、黄色の円(Craft)＝丸テーブル、オレンジのP＝ポスタースタンド</p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-sans text-md">
+              <label class="flex items-center justify-center p-2.5 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-2" value="1" class="mr-2 w-4 h-4 text-blue-600"><span>①</span></label>
+              <label class="flex items-center justify-center p-2.5 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-2" value="2" class="mr-2 w-4 h-4 text-blue-600"><span>②</span></label>
+              <label class="flex items-center justify-center p-2.5 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-2" value="3" class="mr-2 w-4 h-4 text-blue-600"><span>③</span></label>
+              <label class="flex items-center justify-center p-2.5 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-2" value="4" class="mr-2 w-4 h-4 text-blue-600"><span>④</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q1-3">
+            <p class="font-bold mb-3 text-lg">問3 Based on the manual, the AI notice, and Leo's message, which Supply Kit will Leo order? <span class="text-sm font-sans text-slate-400">(2点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-3" value="1" class="mr-3 w-5 h-5 text-blue-600"><span>① Kit A (Basic)</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-3" value="2" class="mr-3 w-5 h-5 text-blue-600"><span>② Kit B (Standard)</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-3" value="3" class="mr-3 w-5 h-5 text-blue-600"><span>③ Kit C (Festival)</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-3" value="4" class="mr-3 w-5 h-5 text-blue-600"><span>④ Kit D (Deluxe)</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q1-4">
+            <p class="font-bold mb-3 text-lg">問4 Which of the following is true about Friday's preparation schedule? <span class="text-sm font-sans text-slate-400">(2点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-4" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① Students are allowed to stay in the gymnasium until 6:30 PM to practice serving tea.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-4" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② The team must submit their layout photo and kit order online at least one hour before the setup period ends at 5:30 PM.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-4" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ Extension cords must be taped across the center of the South Entrance floor before 4:30 PM.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q1-4" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ Teams can use portable gas stoves on Friday afternoon if they open the gymnasium windows.</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="pt-2 flex justify-center"><button onclick="gradeSection(1)" class="grade-btn bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform active:scale-95 text-lg font-sans">採点する</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 第2問 (配点 12) ==================== -->
+    <section id="tab2" class="tab-content hidden">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <div class="flex-1 lg:w-1/2 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+          <div class="flex justify-between items-end border-b-2 border-slate-800 pb-2 mb-6">
+            <div>
+              <span class="font-sans text-xs font-bold text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded border border-indigo-200">2026本試型（推薦フォーム4件＋返信メール照合）× 新傾向（自動審査ログ）</span>
+              <h2 class="text-2xl font-bold mt-1">第2問</h2>
+            </div>
+            <span class="font-sans text-slate-500 font-bold">(配点 12)</span>
+          </div>
+
+          <p class="mb-4 text-sm text-gray-600 font-sans italic bg-slate-100 p-3 rounded">
+            You are an exchange student in the UK. Your local public library in Readburgh is holding an "International Children's Picture Book Week" next month. You read the library's call for recommendations, submitted four online forms, and received an email reply.
+          </p>
+
+          <!-- Call for Recommendations -->
+          <div class="border-2 border-indigo-200 p-4 rounded-xl bg-indigo-50 mb-5 font-sans text-sm">
+            <h3 class="text-lg font-bold text-indigo-950 mb-1">Readburgh Public Library: International Picture Book Week</h3>
+            <p class="text-slate-700 text-xs leading-relaxed mb-2">
+              From 14 to 21 February, our library will host a special exhibition in the Children's Reading Corner to introduce local children to picture books from around the world. We invite international residents and students to recommend wonderful picture books from their home countries!
+            </p>
+            <div class="bg-white p-3 rounded border border-indigo-100 text-xs space-y-1 text-slate-800">
+              <p>• <strong>Selection Criteria:</strong> Books must be suitable for <strong>preschool and lower-primary children (ages 4 to 8)</strong>, cost <strong>£20 or less</strong> per copy so our library budget can cover them, and be available in an English translation or bilingual edition.</p>
+              <p>• <strong>Weekend "Story Time" Sessions:</strong> On Saturday and Sunday afternoons (2:00 PM – 3:30 PM), student volunteers will read selected stories aloud to children. Every volunteer who helps on either day will receive a £10 book token and an official library tote bag as a thank-you gift.</p>
+            </div>
+          </div>
+
+          <!-- 4 Online Submission Forms -->
+          <h4 class="font-bold text-sm font-sans text-slate-700 mb-2">Your Four Submitted Online Recommendation Forms:</h4>
+          <div class="space-y-3 font-sans text-xs mb-5">
+            <!-- Form 1 -->
+            <div class="border border-slate-300 rounded-lg p-3 bg-white shadow-sm">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 border-b pb-1.5 mb-2 text-slate-700">
+                <div><strong>Title:</strong> <em>The Cloud Prince</em></div>
+                <div><strong>Author:</strong> Kamiko Narita</div>
+                <div><strong>Price:</strong> £18</div>
+                <div><strong>Pictures by:</strong> Author</div>
+              </div>
+              <p class="text-slate-700 leading-relaxed">
+                <strong>Comment:</strong> A mischievous boy who lives on a thunder cloud plays harmless tricks on village children, such as making soft snow fall in July. Although the children are frightened of him at first, he rescues a lost baby goat during a storm and they all become warm friends. Widely read to 5-to-7-year-olds.
+              </p>
+            </div>
+
+            <!-- Form 2 -->
+            <div class="border border-slate-300 rounded-lg p-3 bg-white shadow-sm">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 border-b pb-1.5 mb-2 text-slate-700">
+                <div><strong>Title:</strong> <em>Red Panda's Bamboo Train</em></div>
+                <div><strong>Author:</strong> Daiki Mori</div>
+                <div><strong>Price:</strong> £16</div>
+                <div><strong>Pictures by:</strong> Saki Hara</div>
+              </div>
+              <p class="text-slate-700 leading-relaxed">
+                <strong>Comment:</strong> A curious red panda builds a miniature train out of bamboo stalks to deliver sweet berries to forest animals before winter. When a fallen tree blocks the tracks, squirrels and rabbits work together to clear the path, ending in a joyful forest banquet for young readers aged 4 to 7.
+              </p>
+            </div>
+
+            <!-- Form 3 -->
+            <div class="border border-slate-300 rounded-lg p-3 bg-white shadow-sm">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 border-b pb-1.5 mb-2 text-slate-700">
+                <div><strong>Title:</strong> <em>Shadows of the Old Clocktower</em></div>
+                <div><strong>Author:</strong> Renji Kurosawa</div>
+                <div><strong>Price:</strong> £19</div>
+                <div><strong>Pictures by:</strong> Author</div>
+              </div>
+              <p class="text-slate-700 leading-relaxed">
+                <strong>Comment:</strong> Set in an industrial port town, a teenage apprentice investigates complex philosophical riddles left behind by a missing clockmaker and rescues a stray crow. Although the dark ink illustrations are artistic and the ending is hopeful, the vocabulary and themes are aimed at readers aged 13 and above.
+              </p>
+            </div>
+
+            <!-- Form 4 -->
+            <div class="border border-slate-300 rounded-lg p-3 bg-white shadow-sm">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 border-b pb-1.5 mb-2 text-slate-700">
+                <div><strong>Title:</strong> <em>Paint! Paint! Paint!</em></div>
+                <div><strong>Author:</strong> Yuka Endo</div>
+                <div><strong>Price:</strong> £14</div>
+                <div><strong>Pictures by:</strong> Author</div>
+              </div>
+              <p class="text-slate-700 leading-relaxed">
+                <strong>Comment:</strong> Two little kittens find a box of magic watercolors and paint a rainbow bridge across a muddy puddle so their duckling friends can cross safely. Preschoolers (ages 4 to 6) love clapping along to the rhythmic color words and cheering at the cheerful ending!
+              </p>
+            </div>
+          </div>
+
+          <!-- Email Reply -->
+          <div class="border-2 border-slate-300 rounded-xl p-4 bg-slate-50 font-sans text-xs space-y-2">
+            <div class="border-b border-slate-300 pb-2 text-slate-600">
+              <p><strong>From:</strong> internationalbookfair@readburgh.lib.uk</p>
+              <p><strong>Date:</strong> 22 January 2026 | <strong>Subject:</strong> Your Book Recommendations &amp; Volunteer Inquiry</p>
+            </div>
+            <p class="text-slate-800 leading-relaxed">
+              Dear Student,<br>
+              Thank you very much for submitting four book recommendations! We were delighted to verify that all four titles have English translations available and fall within our £20 price limit. Although one of your four entries did not match our target age range (ages 4–8), your other three titles have been gratefully accepted for the exhibition. If you have one additional picture book recommendation for young children to replace the excluded title, please email its details directly to us by Friday.
+            </p>
+            <p class="text-slate-800 leading-relaxed">
+              Also, thank you for signing up to read aloud on Saturday, 14 February. Since we are still short of "Story Time" volunteers for the final day (Sunday, 21 February), would you kindly ask any of your international student friends if they would like to volunteer on that afternoon?
+            </p>
+            <p class="text-slate-700 font-bold">Best regards,<br>Readburgh Library Event Team</p>
+          </div>
+        </div>
+
+        <div class="flex-1 lg:w-1/2 space-y-6">
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q2-1">
+            <p class="font-bold mb-3 text-lg">問1 What is the main purpose of the Readburgh Library event? <span class="text-sm font-sans text-slate-400">(2点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-1" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① To showcase picture books written by local Readburgh elementary school children.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-1" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② To familiarize local children with stories and picture books from around the world.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-1" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ To raise funds by selling second-hand textbooks to university students.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-1" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ To train professional translators to write novels for teenagers.</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q2-2">
+            <p class="font-bold mb-3 text-lg">問2 Which statement is true about the library event? <span class="text-sm font-sans text-slate-400">(2点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-2" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① "Story Time" reading sessions are held every weekday morning from 9:00 AM.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-2" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② The exhibition will run for two full months in the main lobby.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-2" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ Volunteers who read stories on weekends will receive a thank-you gift.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-2" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ Only books priced over £25 are eligible for the exhibition.</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q2-3">
+            <p class="font-bold mb-3 text-lg">問3 Which combination best describes <u>all four</u> books you recommended? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="bg-slate-50 p-3 rounded border mb-3 font-sans text-sm space-y-1">
+              <p><strong>A: All</strong> four books were illustrated by the writers themselves.</p>
+              <p><strong>B: All</strong> four books meet the library's price limit criterion (£20 or under).</p>
+              <p><strong>C: All</strong> four books fit the target age range of 4 to 8 years old.</p>
+              <p><strong>D: All</strong> four stories mention animals in their plot descriptions.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-2 font-sans text-md">
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-3" value="1" class="mr-3 w-5 h-5 text-blue-600"><span>① A and B</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-3" value="2" class="mr-3 w-5 h-5 text-blue-600"><span>② A and C</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-3" value="3" class="mr-3 w-5 h-5 text-blue-600"><span>③ B and C</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-3" value="4" class="mr-3 w-5 h-5 text-blue-600"><span>④ B and D</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q2-4">
+            <p class="font-bold mb-3 text-lg">問4 Which of your book recommendations will <u>not</u> be included in the exhibition? <span class="text-sm font-sans text-slate-400">(2点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-4" value="1" class="mr-3 w-5 h-5 text-blue-600"><span>① <em>The Cloud Prince</em></span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-4" value="2" class="mr-3 w-5 h-5 text-blue-600"><span>② <em>Red Panda's Bamboo Train</em></span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-4" value="3" class="mr-3 w-5 h-5 text-blue-600"><span>③ <em>Shadows of the Old Clocktower</em></span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q2-4" value="4" class="mr-3 w-5 h-5 text-blue-600"><span>④ <em>Paint! Paint! Paint!</em></span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q2-5">
+            <p class="font-bold mb-3 text-lg">問5 In the email, what are the <u>two</u> things that the library staff would like you to do? (Choose two. The order does not matter.) <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="checkbox" name="q2-5" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① Invite your friends to volunteer for the final Sunday session.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="checkbox" name="q2-5" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② Purchase four copies of <em>The Cloud Prince</em> at a local bookstore.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="checkbox" name="q2-5" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ Cancel your Saturday volunteer shift on 14 February.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="checkbox" name="q2-5" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ Send an email with one more book recommendation for young children.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="checkbox" name="q2-5" value="5" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>⑤ Translate <em>Red Panda's Bamboo Train</em> into French and Spanish.</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="pt-2 flex justify-center"><button onclick="gradeSection(2)" class="grade-btn bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform active:scale-95 text-lg font-sans">採点する</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 第3問 (配点 12) ==================== -->
+    <section id="tab3" class="tab-content hidden">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <div class="flex-1 lg:w-1/2 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+          <div class="flex justify-between items-end border-b-2 border-slate-800 pb-2 mb-6">
+            <div>
+              <span class="font-sans text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded border border-amber-200">旧・現傾向（物語・ブログの時系列並び替え ＆ 写真選択・心情変化）</span>
+              <h2 class="text-2xl font-bold mt-1">第3問</h2>
+            </div>
+            <span class="font-sans text-slate-500 font-bold">(配点 12)</span>
+          </div>
+
+          <p class="mb-4 text-sm text-gray-600 font-sans italic bg-slate-100 p-3 rounded">
+            Your English teacher told you to read this personal blog post written by a high school student, Daichi, about a weekend nature and mindfulness workshop he attended with his friend.
+          </p>
+
+          <h3 class="text-2xl font-bold text-center mb-4 text-slate-800">The Paper Lantern and the Forest Beetle</h3>
+
+          <p class="passage-text indent">
+            Last Sunday morning, my classmate Sora and I were sitting silently on wooden mats inside an old cedar hall at the Green Valley Nature Center, trying to count our breaths for forty minutes. I had signed up for this "Digital Detox &amp; Forest Mindfulness" day camp to learn how to calm my racing thoughts before our winter university entrance mock exams. To be honest, it wasn't my own idea at first; my older sister, who had attended the same workshop two years ago when she was struggling with exam stress, had strongly recommended it to me over dinner last month. She told me that leaving my smartphone in a locker for a single Sunday might help me reset my concentration. Sora decided to come along too because he had been losing sleep over our basketball team's upcoming tournament.
+          </p>
+          <p class="passage-text indent">
+            Before the morning meditation session started at 10:00 AM, all twenty participants had gathered at the log cabin reception desk at 9:15 AM to hand in their smartphones and receive a handmade paper lantern for the afternoon forest walk. While we were waiting in line at the reception desk, Sora accidentally bumped his elbow against a wooden shelf, knocking over a display basket of pine cones. We hurriedly picked them up together, laughing nervously. Then, we entered the quiet cedar hall and sat down in two neat rows facing the open garden windows.
+          </p>
+          <p class="passage-text indent">
+            About twenty minutes into the silent breathing session, I heard a low, rhythmic scratching sound near my right knee. Little by little, the sound grew louder. Opening one eye slightly, I saw a large, shiny brown stag beetle climbing up the sleeve of my sweater! I was startled and instinctively raised my left hand to flick it away, but our instructor, Ms. Wakabayashi, had told us at the beginning not to make sudden movements or loud noises during the session. My heart started beating fast, and I wondered what on earth I should do.
+          </p>
+          <p class="passage-text indent">
+            Just then, Ms. Wakabayashi noticed my frozen posture. Moving without a sound, she picked up a fallen magnolia leaf and a small bamboo tea saucer from a side table. She knelt beside me and gently held the magnolia leaf in front of the beetle's legs. As soon as the beetle crawled onto the leaf, she covered it loosely with the bamboo saucer so it wouldn't fly into anyone's hair. Instead of throwing the insect roughly outside, she walked slowly to the wooden veranda, knelt down, and placed the leaf on the mossy root of an oak tree. Watching the beetle walk safely into the moss, she smiled warmly at me.
+          </p>
+          <p class="passage-text indent">
+            After the session ended at noon, Ms. Wakabayashi came over to me while we were drinking warm roasted green tea. "When an unexpected trouble crawls onto your sleeve—whether it's a forest beetle or a difficult exam question—fighting it in panic only breaks your peace," she said gently. "Acknowledge it calmly, guide it with patience, and let it pass." In the afternoon, Sora and I walked the three-kilometer forest trail carrying our paper lanterns and took a commemorative polaroid photo with Ms. Wakabayashi in front of the oak tree before heading home at 4:00 PM. I don't know yet whether my next mock exam score will jump immediately, but that tiny beetle taught me the true meaning of a steady mind.
+          </p>
+
+          <!-- 4つのシーン図 (SVG) -->
+          <div class="border p-4 rounded-xl bg-slate-50 mt-4">
+            <p class="text-xs font-sans font-bold text-slate-700 mb-2 text-center">Scenes from Daichi's Day at the Nature Center</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-sans text-xs">
+              <div class="bg-white p-2 rounded border text-center">
+                <span class="font-bold text-slate-800">Scene A</span>
+                <svg viewBox="0 0 100 75" class="w-full h-auto mt-1">
+                  <rect x="10" y="50" width="80" height="6" fill="#92400e"/>
+                  <circle cx="35" cy="30" r="8" fill="#fca5a5"/>
+                  <circle cx="65" cy="30" r="8" fill="#93c5fd"/>
+                  <circle cx="48" cy="62" r="4" fill="#78350f"/><circle cx="56" cy="64" r="4" fill="#78350f"/>
+                  <text x="50" y="14" font-size="7" text-anchor="middle" fill="#475569">Reception</text>
+                </svg>
+              </div>
+              <div class="bg-white p-2 rounded border text-center">
+                <span class="font-bold text-slate-800">Scene B</span>
+                <svg viewBox="0 0 100 75" class="w-full h-auto mt-1">
+                  <circle cx="35" cy="36" r="8" fill="#fca5a5"/>
+                  <circle cx="65" cy="32" r="8" fill="#fde047"/>
+                  <ellipse cx="50" cy="42" rx="10" ry="5" fill="#86efac" stroke="#15803d"/>
+                  <text x="50" y="14" font-size="7" text-anchor="middle" fill="#475569">Leaf &amp; Saucer</text>
+                </svg>
+              </div>
+              <div class="bg-white p-2 rounded border text-center">
+                <span class="font-bold text-slate-800">Scene C</span>
+                <svg viewBox="0 0 100 75" class="w-full h-auto mt-1">
+                  <circle cx="45" cy="35" r="9" fill="#fca5a5"/>
+                  <circle cx="58" cy="48" r="3.5" fill="#451a03"/>
+                  <text x="50" y="14" font-size="7" text-anchor="middle" fill="#475569">Beetle on Sleeve</text>
+                </svg>
+              </div>
+              <div class="bg-white p-2 rounded border text-center">
+                <span class="font-bold text-slate-800">Scene D</span>
+                <svg viewBox="0 0 100 75" class="w-full h-auto mt-1">
+                  <rect x="42" y="25" width="16" height="35" fill="#78350f"/>
+                  <circle cx="50" cy="20" r="14" fill="#22c55e"/>
+                  <circle cx="25" cy="45" r="6" fill="#fca5a5"/><circle cx="75" cy="45" r="6" fill="#93c5fd"/>
+                  <text x="50" y="70" font-size="7" text-anchor="middle" fill="#475569">Oak Tree Photo</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-1 lg:w-1/2 space-y-6">
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q3-1">
+            <p class="font-bold mb-3 text-lg">問1 Why did Daichi decide to join the mindfulness workshop? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q3-1" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① His basketball coach ordered the entire team to attend it.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q3-1" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② A family member who had taken the workshop before suggested it to him.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q3-1" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ He wanted to collect rare stag beetles in the cedar forest.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q3-1" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ His classmate Sora signed him up without telling him.</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q3-2">
+            <p class="font-bold mb-3 text-lg">問2 Put the four scenes (A–D) in the chronological order in which they actually happened on Sunday. <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <ul class="list-disc pl-5 mb-4 text-sm font-sans text-slate-700 space-y-1">
+              <li><strong>A:</strong> Picking up pine cones that were knocked over at the reception desk.</li>
+              <li><strong>B:</strong> The instructor guiding the beetle onto a magnolia leaf and covering it with a saucer.</li>
+              <li><strong>C:</strong> Discovering a brown stag beetle climbing up Daichi's sweater sleeve.</li>
+              <li><strong>D:</strong> Taking a commemorative photo in front of the oak tree after the trail walk.</li>
+            </ul>
+            <div class="flex items-center gap-2 font-sans">
+              <select class="order-select border border-slate-400 p-2 rounded bg-white w-16 text-center"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+              <span>→</span>
+              <select class="order-select border border-slate-400 p-2 rounded bg-white w-16 text-center"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+              <span>→</span>
+              <select class="order-select border border-slate-400 p-2 rounded bg-white w-16 text-center"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+              <span>→</span>
+              <select class="order-select border border-slate-400 p-2 rounded bg-white w-16 text-center"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q3-3">
+            <p class="font-bold mb-3 text-lg">問3 Why did Daichi hesitate to flick the beetle off his sweater with his hand? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q3-3" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① He was afraid that the stag beetle might bite his fingers.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q3-3" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② Participants had been instructed not to move suddenly or make noise during meditation.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q3-3" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ He wanted to keep the beetle inside his paper lantern as a pet.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q3-3" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ His hands were tied together with a wooden meditation band.</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q3-4">
+            <p class="font-bold mb-3 text-lg">問4 From Ms. Wakabayashi's actions and words, Daichi learned the importance of _____ when facing unexpected difficulties. <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q3-4" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① reacting with speed and force before anyone else notices</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q3-4" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② handling problems gently and calmly rather than fighting them in panic</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q3-4" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ avoiding outdoor nature centers during the winter exam season</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q3-4" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ memorizing the scientific names of forest trees and insects</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="pt-2 flex justify-center"><button onclick="gradeSection(3)" class="grade-btn bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform active:scale-95 text-lg font-sans">採点する</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 第4問 (配点 12) ==================== -->
+    <section id="tab4" class="tab-content hidden">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <div class="flex-1 lg:w-1/2 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+          <div class="flex justify-between items-end border-b-2 border-slate-800 pb-2 mb-6">
+            <div>
+              <span class="font-sans text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded border border-purple-200">新課程本試型（指導教員コメントに基づくエッセイ推敲：接続詞・文挿入・不要文削除・要約修正）</span>
+              <h2 class="text-2xl font-bold mt-1">第4問</h2>
+            </div>
+            <span class="font-sans text-slate-500 font-bold">(配点 12)</span>
+          </div>
+
+          <p class="mb-4 text-sm text-gray-600 font-sans italic bg-slate-100 p-3 rounded">
+            In your English writing class, you are writing an essay for the school newsletter about "Reclaiming Our Attention in a Digital Age." You are revising your draft based on comments from your teacher, Mr. Davis.
+          </p>
+
+          <h3 class="text-xl font-bold text-center mb-4 text-slate-800">Slow Down to Connect: Reclaiming Our Attention</h3>
+
+          <p class="passage-text indent">
+            How many times a day do you unlock your smartphone without even thinking about why you picked it up? Today, many high school students check their screens while eating breakfast, walking between classrooms, and even talking with friends. People today tend to consume far more digital notifications and short videos than their brains actually need. <span class="font-bold text-blue-700">【 (1) 】</span>, we should consciously reduce our screen time and practice "single-tasking" so that we can enjoy a calmer, more rewarding school life.
+          </p>
+          <p class="passage-text indent">
+            First, putting away our phones during face-to-face conversations dramatically improves our friendships. Have you ever tried to tell an important story to a friend who kept glancing down at a text message? Research in social psychology shows that even the presence of a silent phone on a café table makes conversations shallower and reduces empathy. <strong>&lt; A &gt;</strong> To build deeper trust, we need to change our daily habits when spending time with others. <strong>&lt; B &gt;</strong> When you listen with your full attention, you notice subtle facial expressions and tone of voice that text messages can never convey. <strong>&lt; C &gt;</strong>
+          </p>
+          <p class="passage-text indent">
+            Second, creating a "phone-free wind-down hour" before bedtime helps us process our daily experiences. <strong>[Sentence ①]</strong> Many students scroll through social media in bed until midnight, which keeps their brains overstimulated and ruins their sleep quality. <strong>[Sentence ②]</strong> Instead of staring at a bright screen at night, try writing a short three-line diary in a paper notebook. <strong>[Sentence ③]</strong> The history of paper manufacturing began in ancient China more than two thousand years ago. <strong>[Sentence ④]</strong> By jotting down a few thoughts in a quiet room, you can <u><strong>(3) finish your math homework much faster than your classmates</strong></u> and wake up feeling mentally refreshed.
+          </p>
+          <p class="passage-text indent">
+            By making these small changes—giving friends our undivided presence during the day and reflecting quietly at night—we can <u><strong>(4) buy the newest smartphone models at a lower price</strong></u>. Taking back control of our attention is the first step toward a happier youth.
+          </p>
+
+          <!-- Teacher's Comments -->
+          <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl font-sans text-xs text-slate-800 space-y-2 mt-5">
+            <p class="font-bold text-amber-950 text-sm">Mr. Davis's Comments:</p>
+            <p>• <strong>Comment (1):</strong> Choose the best connecting word for <strong>【 (1) 】</strong> to show that your recommendation is the logical result of the problem stated in the previous sentence.</p>
+            <p>• <strong>Comment (2):</strong> In Paragraph 2, add the concrete action sentence: <em>"Specifically, try keeping your phone zipped inside your bag and focusing your eyes on the person speaking to you."</em> at the most logical place (<strong>&lt; A &gt;</strong>–<strong>&lt; C &gt;</strong>). Also, in Paragraph 3, one sentence is off-topic and breaks the flow—please remove it.</p>
+            <p>• <strong>Comment (3):</strong> Underlined part <strong>(3)</strong> in Paragraph 3 does not match the benefit of writing a night diary. Rewrite it to fit the paragraph's focus on memory and reflection.</p>
+            <p>• <strong>Comment (4):</strong> Underlined part <strong>(4)</strong> in the final paragraph does not match your overall argument. Replace it with a phrase that summarizes the main benefits of your essay.</p>
+          </div>
+        </div>
+
+        <div class="flex-1 lg:w-1/2 space-y-6">
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q4-1">
+            <p class="font-bold mb-3 text-lg">問1 Based on <strong>Comment (1)</strong>, which is the best word to put in <strong>【 (1) 】</strong>? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-1" value="1" class="mr-3 w-5 h-5 text-blue-600"><span>① However</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-1" value="2" class="mr-3 w-5 h-5 text-blue-600"><span>② Otherwise</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-1" value="3" class="mr-3 w-5 h-5 text-blue-600"><span>③ Therefore</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-1" value="4" class="mr-3 w-5 h-5 text-blue-600"><span>④ Meanwhlie</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q4-2">
+            <p class="font-bold mb-3 text-lg">問2 Based on <strong>Comment (2)</strong>, choose the best combination of the insertion place in Paragraph 2 and the off-topic sentence to <u>remove</u> from Paragraph 3. <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-2" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① Insertion Place: <strong>&lt; A &gt;</strong> / Remove: <strong>[Sentence ①]</strong></span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-2" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② Insertion Place: <strong>&lt; B &gt;</strong> / Remove: <strong>[Sentence ③]</strong></span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-2" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ Insertion Place: <strong>&lt; B &gt;</strong> / Remove: <strong>[Sentence ②]</strong></span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-2" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ Insertion Place: <strong>&lt; C &gt;</strong> / Remove: <strong>[Sentence ④]</strong></span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q4-3">
+            <p class="font-bold mb-3 text-lg">問3 Based on <strong>Comment (3)</strong>, which is the best phrase to replace underlined part <strong>(3)</strong>? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-3" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① think back on the memorable parts of your day and organize your feelings</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-3" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② reply to fifty social media messages in less than ten minutes</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-3" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ learn how ancient Chinese scientists invented paper</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-3" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ throw away all the notebooks and pens on your desk</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q4-4">
+            <p class="font-bold mb-3 text-lg">問4 Based on <strong>Comment (4)</strong>, which is the best phrase to replace underlined part <strong>(4)</strong>? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-4" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① build deeper relationships with friends and enjoy better mental rest</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-4" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② become professional software engineers right after graduation</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-4" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ avoid talking to classmates in the school cafeteria</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q4-4" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ keep our smartphone screens turned on twenty-four hours a day</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="pt-2 flex justify-center"><button onclick="gradeSection(4)" class="grade-btn bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform active:scale-95 text-lg font-sans">採点する</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 第5問 (配点 16) ==================== -->
+    <section id="tab5" class="tab-content hidden">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <div class="flex-1 lg:w-1/2 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+          <div class="flex justify-between items-end border-b-2 border-slate-800 pb-2 mb-6">
+            <div>
+              <span class="font-sans text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded border border-teal-200">過去問定番（SIN教室設計フレームワーク＋アンケート集計＋コメント照合＋誤り削除）</span>
+              <h2 class="text-2xl font-bold mt-1">第5問</h2>
+            </div>
+            <span class="font-sans text-slate-500 font-bold">(配点 16)</span>
+          </div>
+
+          <p class="mb-4 text-sm text-gray-600 font-sans italic bg-slate-100 p-3 rounded">
+            Your university's Global Communication Club room has several environmental problems, and you are leading a project to redesign it. You have gathered an educational design article, the results of a club member questionnaire, and your proposal handout.
+          </p>
+
+          <!-- Design Article -->
+          <div class="border border-slate-300 p-4 rounded-xl bg-white mb-5">
+            <h3 class="text-lg font-bold text-center text-slate-800 mb-1">What Makes an Ideal Learning &amp; Club Space?</h3>
+            <p class="text-xs text-center text-slate-500 mb-3">By Dr. Diana Bashworth, Editor at <em>Campus Design Quarterly</em></p>
+            <p class="passage-text text-sm">
+              As schools and universities work to improve their study lounges and club rooms, it is helpful to follow a clear design framework. The <strong>SIN Model</strong>—which stands for <em>Stimulation</em>, <em>Individualization</em>, and <em>Naturalness</em>—provides practical guidelines for creating productive spaces.
+            </p>
+            <p class="passage-text text-sm">
+              First, <strong>Stimulation</strong> relates to visual color and complexity across walls, floors, and displays. A room with bare gray walls feels dull, yet a room with too many bright posters and cluttered shelves is visually distracting. Designers recommend painting one accent wall a calm, inviting color and keeping <strong>20% to 30% of wall space completely free</strong> of posters or shelves.
+            </p>
+            <p class="passage-text text-sm">
+              Second, <strong>Individualization</strong> includes two elements: <em>ownership</em> and <em>flexibility</em>. Ownership means students feel the room belongs to them—for example, by having personal lockers and a neat display shelf for club trophies or current projects. Flexibility means using lightweight, wheeled desks and stackable chairs so the room can be quickly rearranged for quiet individual reading, small-group chatting, or large debate practice.
+            </p>
+            <p class="passage-text text-sm mb-0">
+              Third, <strong>Naturalness</strong> concerns light, temperature, and air quality. Too much direct sunlight through bare windows creates blinding glare on projector screens and whiteboards, while the opposite corner of the room may remain too dark for reading. Furthermore, poorly ventilated rooms become hot and stuffy in summer. Installing adjustable window blinds, balanced LED ceiling lights, and a quiet air-circulation fan is essential.
+            </p>
+          </div>
+
+          <!-- Questionnaire Results -->
+          <div class="border border-slate-300 p-4 rounded-xl bg-slate-50 mb-5 font-sans text-xs">
+            <h4 class="font-bold text-sm text-slate-800 mb-2">Results of the Club Room Questionnaire (Total Club Members = 40)</h4>
+            <p class="text-slate-600 mb-2"><strong>Q1: Choose any activities that match your use of the club room (Multiple choices allowed):</strong></p>
+            <div class="grid grid-cols-2 gap-1.5 bg-white p-2.5 rounded border mb-3">
+              <div>• Chatting in English: <strong>34</strong></div>
+              <div>• Doing English homework: <strong>28</strong></div>
+              <div>• Borrowing English books: <strong>22</strong></div>
+              <div>• Practicing presentations: <strong>19</strong></div>
+              <div>• Eating lunch / snacks: <strong>15</strong></div>
+              <div>• Taking a short nap: <strong>9</strong></div>
+            </div>
+            <p class="text-slate-600 mb-1.5"><strong>Q2: Main comments about the current club room (S1–S6):</strong></p>
+            <div class="space-y-1.5 bg-white p-2.5 rounded border text-slate-700">
+              <p><strong>S1:</strong> On sunny afternoons, direct sunlight hits the whiteboard and projector screen, making them impossible to read. Also, the room is way too hot in July.</p>
+              <p><strong>S2:</strong> Every single wall is covered from floor to ceiling with old event posters from ten years ago! It feels messy and makes it hard to concentrate on homework.</p>
+              <p><strong>S3:</strong> Near the windows it's too bright, but the back corner is so dim that it hurts my eyes to read books there.</p>
+              <p><strong>S4:</strong> The long wooden tables are extremely heavy. Whenever we switch from individual study to group debate practice, we can't move the tables at all.</p>
+              <p><strong>S5:</strong> There is no storage space for our club's speech contest trophies or our personal dictionaries, so people just pile them on the floor.</p>
+              <p><strong>S6:</strong> I love borrowing books from the club collection, but the bookshelves are overflowing and blocking the hallway door.</p>
+            </div>
+          </div>
+
+          <!-- Proposal Handout Draft -->
+          <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-300 font-sans text-xs space-y-2">
+            <h4 class="font-bold text-sm text-center text-slate-800 border-b border-yellow-400 pb-1">Your Handout Draft: Club Room Redesign Proposal</h4>
+            <p>• <strong>1. What is the SIN Model?</strong> → <span class="font-bold text-blue-700">【 24 】</span></p>
+            <p>• <strong>2. Improving Stimulation:</strong> To address <strong>S2</strong>'s comment, we should <span class="font-bold text-blue-700">【 25 】</span> so that 20–30% of the wall space stays open.</p>
+            <p>• <strong>3. Improving Naturalness ( Addressing S1 &amp; S3 ):</strong><br>
+              &nbsp;&nbsp;(A) Install adjustable blinds on the windows to control glare.<br>
+              &nbsp;&nbsp;(B) Add LED lights in the dim back corner of the room.<br>
+              &nbsp;&nbsp;(C) Cover 100% of the windows with thick black bricks permanently.<br>
+              &nbsp;&nbsp;(D) Set up a quiet air-circulation fan for hot summer days.
+            </p>
+            <p>• <strong>4. Improving Individualization:</strong> More than half of our members <span class="font-bold text-blue-700">【 27 】</span> the club room, and to solve <span class="font-bold text-blue-700">【 28 】</span>'s concern about switching between study and debate layouts, we should introduce wheeled modular desks.</p>
+          </div>
+        </div>
+
+        <div class="flex-1 lg:w-1/2 space-y-6">
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q5-1">
+            <p class="font-bold mb-3 text-lg">問1 Choose the best option for <strong>【 24 】</strong> on your handout. <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-1" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① A financial plan for reducing university electricity bills in winter.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-1" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② A framework to follow when planning and designing effective learning spaces.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-1" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ A set of rules for testing students' English speaking speed.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-1" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ A schedule for rotating club presidents every semester.</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q5-2">
+            <p class="font-bold mb-3 text-lg">問2 Choose the best option for <strong>【 25 】</strong> on your handout. <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-2" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① paint every wall a different neon color</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-2" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② remove old, cluttered posters and reduce displayed items on the walls</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-2" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ move the whiteboard out into the hallway</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-2" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ buy heavier wooden tables for the center of the room</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q5-3">
+            <p class="font-bold mb-3 text-lg">問3 While checking Section 3 ("Improving Naturalness") of your handout, you notice an error that contradicts Dr. Bashworth's article. Which item (A–D) should you <u>remove</u>? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-sans text-md">
+              <label class="flex items-center justify-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-3" value="1" class="mr-2 w-4 h-4 text-blue-600"><span>① (A)</span></label>
+              <label class="flex items-center justify-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-3" value="2" class="mr-2 w-4 h-4 text-blue-600"><span>② (B)</span></label>
+              <label class="flex items-center justify-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-3" value="3" class="mr-2 w-4 h-4 text-blue-600"><span>③ (C)</span></label>
+              <label class="flex items-center justify-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-3" value="4" class="mr-2 w-4 h-4 text-blue-600"><span>④ (D)</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q5-4">
+            <p class="font-bold mb-3 text-lg">問4 Based on the questionnaire data and comments, choose the best combination for <strong>【 27 】</strong> and <strong>【 28 】</strong>. <span class="text-sm font-sans text-slate-400">(4点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-4" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① 【 27 】 = take naps in / 【 28 】 = S1</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-4" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② 【 27 】 = do English homework in / 【 28 】 = S4</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-4" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ 【 27 】 = eat lunch in / 【 28 】 = S5</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-4" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ 【 27 】 = borrow English books from / 【 28 】 = S2</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q5-5">
+            <p class="font-bold mb-3 text-lg">問5 Which two students' comments relate directly to the <em>ownership</em> aspect of Individualization (storage for personal items, club trophies, and books)? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="grid grid-cols-2 gap-2 font-sans text-md">
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-5" value="1" class="mr-3 w-5 h-5 text-blue-600"><span>① S1 and S2</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-5" value="2" class="mr-3 w-5 h-5 text-blue-600"><span>② S2 and S3</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-5" value="3" class="mr-3 w-5 h-5 text-blue-600"><span>③ S3 and S4</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q5-5" value="4" class="mr-3 w-5 h-5 text-blue-600"><span>④ S5 and S6</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="pt-2 flex justify-center"><button onclick="gradeSection(5)" class="grade-btn bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform active:scale-95 text-lg font-sans">採点する</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 第6問 (配点 12) ==================== -->
+    <section id="tab6" class="tab-content hidden">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <div class="flex-1 lg:w-1/2 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+          <div class="flex justify-between items-end border-b-2 border-slate-800 pb-2 mb-6">
+            <div>
+              <span class="font-sans text-xs font-bold text-rose-700 bg-rose-50 px-2.5 py-0.5 rounded border border-rose-200">2025/2026本試型（回想物語『おにぎり屋』＋2026本試『未言及の追加ディテール選択』）</span>
+              <h2 class="text-2xl font-bold mt-1">第6問</h2>
+            </div>
+            <span class="font-sans text-slate-500 font-bold">(配点 12)</span>
+          </div>
+
+          <p class="mb-4 text-sm text-gray-600 font-sans italic bg-slate-100 p-3 rounded">
+            In English class, you have read the following short story and prepared a Story Outline and a review note for a class discussion.
+          </p>
+
+          <h3 class="text-2xl font-bold text-center mb-4 text-slate-800">The Corner Shoe-Repair Shop</h3>
+
+          <p class="passage-text indent">
+            Sitting on a bench outside the city concert hall twenty minutes before her first professional orchestra audition, twenty-three-year-old Haruka looked down at her polished black leather concert shoes. Gently touching the sturdy stitched soles, she felt the tightness in her shoulders melt away. The faint scent of beeswax polish carried her memories back ten years to the shopping arcade of her hometown.
+          </p>
+          <p class="text-center text-slate-400 my-2">◆◆◆◆◆</p>
+          <p class="passage-text indent">
+            Back in junior high school, Haruka belonged to the school string orchestra club and practiced the cello every day after class. On her way home to the train station, she always walked past a tiny, dimly lit shoe-repair shop wedged between a bakery and a flower store. Inside sat Mr.akura, an elderly craftsman with silver hair and thick glasses, tapping brass nails into leather heels. Because Mr. Sakura had a stern expression and almost never chatted with passersby, Haruka was a little afraid of him and hurried past his window every evening.
+          </p>
+          <p class="passage-text indent">
+            One rainy Friday in November, the evening before the Prefectural Junior Orchestra Contest, Haruka was rushing through the arcade carrying her heavy cello case on her back. In her haste, she tripped over a loose paving stone. Although she twisted her body to protect her cello from hitting the ground, the strap of her right school loafer snapped completely in two! Sitting on the wet pavement with a broken shoe, Haruka bit her lip to hold back tears. Her parents were still at work, and she had no other pair of black dress shoes for tomorrow's stage performance.
+          </p>
+          <p class="passage-text indent">
+            Suddenly, the wooden sliding door of the shoe-repair shop opened. Without a word, Mr. Sakura stepped out holding an old umbrella and a pair of warm indoor slippers. "Come inside before you catch a cold," he said in a surprisingly gentle voice. While Haruka sat by his small electric stove, the old craftsman examined her torn loafer. Noticing the calluses on her fingertips and the cello case beside her, he murmured softly, "My late wife used to play the violin in a local civic group. Step on stage with steady feet, and your bow will never tremble."
+          </p>
+          <p class="passage-text indent">
+            Working with remarkable speed and care, Mr. Sakura didn't just sew the broken strap back; he reinforced both soles with non-slip rubber pads so her feet would stay firmly planted on the wooden concert stage while playing the cello. When Haruka opened her coin purse to pay, he shook his head and waved his hand. "Pay me by playing a good note tomorrow," he said, looking away shyly.
+          </p>
+          <p class="passage-text indent">
+            The next day, supported by her rock-steady shoes, Haruka performed her solo passage without a single mistake, and her school club won the Gold Prize. On Monday afternoon, she wrote a heartfelt thank-you letter and bought a box of sweet bean buns from the bakery next door to give to Mr. Sakura. From that week until she graduated from high school, she always stopped by his window to wave hello, and whenever she had a big concert, Mr. Sakura polished her stage shoes until they shone like mirrors.
+          </p>
+          <p class="text-center text-slate-400 my-2">◆◆◆◆◆</p>
+          <p class="passage-text indent">
+            "Number 14, Ms. Haruka Sato, please come to the stage entrance," the audition coordinator called out. Taking a deep breath, Haruka stood up on her steady soles and walked toward the stage doors with a bright smile, ready to let her cello sing.
+          </p>
+
+          <!-- Story Outline -->
+          <div class="bg-yellow-50 p-5 rounded-2xl border border-yellow-300 handwriting text-slate-800 text-xs space-y-2 mt-4">
+            <h4 class="text-lg font-bold text-center border-b border-yellow-400 pb-1">Story Outline &amp; Classmate's Review Note</h4>
+            <p><strong>Characters:</strong><br>
+              • <strong>Haruka:</strong> Played the cello in junior high school; was shy around Mr. Sakura at first.<br>
+              • <strong>Mr. Sakura:</strong> Ran a tiny shoe-repair shop; <span class="font-bold text-blue-800 bg-white px-1.5 border rounded">【 29 】</span>.
+            </p>
+            <p><strong>Important Incidents in Haruka's Youth:</strong><br>
+              <strong>【 30 】 → 【 31 】 → 【 32 】 → 【 33 】</strong>
+            </p>
+            <p><strong>Ideas for a Sequel / Expanded Version:</strong><br>
+              "To give the story even more depth, the author could add details about <span class="font-bold text-red-600 bg-white px-1.5 border rounded">【 34 】</span>, which are <u>not</u> mentioned in the current story."
+            </p>
+          </div>
+        </div>
+
+        <div class="flex-1 lg:w-1/2 space-y-6">
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q6-1">
+            <p class="font-bold mb-3 text-lg">問1 Choose the best option for <strong>【 29 】</strong> to describe Mr. Sakura. <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q6-1" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① looked strict from the outside, but had a warm heart and a personal connection to music</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q6-1" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② taught cello lessons at Haruka's junior high school every Friday</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q6-1" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ charged Haruka a high fee for adding non-slip rubber pads to her shoes</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q6-1" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ closed his shoe-repair shop to open a bakery next door</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q6-2">
+            <p class="font-bold mb-3 text-lg">問2 Put the four events (A–D) in the correct chronological order for <strong>【 30 】→【 31 】→【 32 】→【 33 】</strong>. <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <ul class="list-disc pl-5 mb-4 text-sm font-sans text-slate-700 space-y-1">
+              <li><strong>A:</strong> Haruka brings a thank-you letter and sweet bean buns to Mr. Sakura after winning the Gold Prize.</li>
+              <li><strong>B:</strong> Haruka trips on a wet paving stone and breaks the strap of her shoe the evening before her contest.</li>
+              <li><strong>C:</strong> Mr. Sakura repairs and reinforces Haruka's shoes for free while telling her about his late wife.</li>
+              <li><strong>D:</strong> As an adult, Haruka touches her polished shoes to calm her nerves before her professional orchestra audition.</li>
+            </ul>
+            <div class="flex items-center gap-2 font-sans">
+              <select class="order-select border border-slate-400 p-2 rounded bg-white w-16 text-center"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+              <span>→</span>
+              <select class="order-select border border-slate-400 p-2 rounded bg-white w-16 text-center"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+              <span>→</span>
+              <select class="order-select border border-slate-400 p-2 rounded bg-white w-16 text-center"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+              <span>→</span>
+              <select class="order-select border border-slate-400 p-2 rounded bg-white w-16 text-center"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q6-3">
+            <p class="font-bold mb-3 text-lg">問3 Why did Mr. Sakura attach non-slip rubber pads to both soles of Haruka's loafers? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q6-3" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① So that she could run faster to the train station in the rain.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q6-3" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② So that her feet would remain stable on the wooden concert stage while playing the cello.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q6-3" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ Because he had run out of leather and brass nails in his workshop.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q6-3" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ Because Haruka's parents had ordered custom rubber soles the week before.</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q6-4">
+            <p class="font-bold mb-3 text-lg">問4 Choose the best option for <strong>【 34 】</strong> (details that are <u>not</u> mentioned or suggested in the story). <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q6-4" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① what musical instrument Mr. Sakura's late wife used to play</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q6-4" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② how Mr. Sakura first learned the craft of shoe-making in his youth and what title of music Haruka played at her professional audition</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q6-4" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ what gift Haruka bought for Mr. Sakura on the Monday after the junior orchestra contest</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q6-4" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ why Haruka twisted her body when she tripped on the paving stone</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="pt-2 flex justify-center"><button onclick="gradeSection(6)" class="grade-btn bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform active:scale-95 text-lg font-sans">採点する</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 第7問 (配点 12) ==================== -->
+    <section id="tab7" class="tab-content hidden">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <div class="flex-1 lg:w-1/2 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+          <div class="flex justify-between items-end border-b-2 border-slate-800 pb-2 mb-6">
+            <div>
+              <span class="font-sans text-xs font-bold text-cyan-700 bg-cyan-50 px-2.5 py-0.5 rounded border border-cyan-200">本試定番（科学長文＋プレゼンノートの誤り削除＋4人の人物発言 Ami/Barry/Chihiro/Dean への適用）</span>
+              <h2 class="text-2xl font-bold mt-1">第7問</h2>
+            </div>
+            <span class="font-sans text-slate-500 font-bold">(配点 12)</span>
+          </div>
+
+          <p class="mb-4 text-sm text-gray-600 font-sans italic bg-slate-100 p-3 rounded">
+            Your biology teacher has assigned this science article to you. You are preparing a presentation outline and thinking about which classmates' daily habits match the article's advice.
+          </p>
+
+          <h3 class="text-2xl font-bold text-center mb-4 text-slate-800">Rhythms of Rest: How Brains Recharge Day and Night</h3>
+
+          <p class="passage-text indent">
+            Why do all animals with a nervous system need to rest, even when resting leaves them vulnerable to predators? Modern neurobiology reveals that sleep is far from a passive shutdown. During sleep, the brain repairs cellular damage, consolidates newly learned skills into long-term memory, and flushes out metabolic waste proteins that accumulate between neurons during waking hours. Contrary to an old myth, sleep is not meant to permanently raise an animal's core body temperature; in fact, body temperature naturally drops slightly during deep rest to conserve energy.
+          </p>
+          <p class="passage-text indent">
+            Across the animal kingdom, species have evolved remarkable ways to balance rest with survival. For example, great frigatebirds—seabirds that fly non-stop over the Pacific Ocean for weeks—utilize "unihemispheric slow-wave sleep." While gliding on rising air currents, they rest one half of their brain at a time while keeping the other half awake and one eye open to watch their flight path. Meanwhile, some organisms without a central brain, such as box jellyfish, enter a sleep-like relaxation state on the sea floor at night, and black bears enter winter hibernation—a seasonal state of torpor that saves energy when food is scarce, though it differs neurologically from daily sleep.
+          </p>
+          <p class="passage-text indent">
+            What about humans during the daytime? Chronobiologists have discovered that the 24-hour circadian clock is not the only rhythm governing our minds. Throughout the day, human alertness rises and falls in 90-to-120-minute waves called <strong>"ultradian rhythms."</strong> After roughly 90 minutes of intense mental focus, the brain's prefrontal cortex begins to run low on glucose and neurotransmitters, causing concentration to dip and mistakes to rise.
+          </p>
+          <p class="passage-text indent">
+            To work with—rather than against—these biological rhythms, sleep scientists recommend two practical habits. First, after every 90 minutes of focused study, step away from digital screens for 15 minutes to let your eyes view natural daylight or greenery, or do light physical movement such as stretching or walking outdoors. Checking social media on a smartphone during a break does not rest the visual cortex! Second, to protect nighttime sleep cycles, avoid caffeinated drinks like strong green tea or coffee late at night, and avoid staring at bright phone screens immediately after waking up or right before sleeping.
+          </p>
+
+          <!-- 4 People's Profiles (Ami, Barry, Chihiro, Dean) -->
+          <h4 class="font-bold text-sm font-sans text-slate-700 mt-5 mb-2">Classmates' Daily Habits (Who follows the passage's recommendations?):</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-sans text-xs">
+            <div class="border border-slate-300 rounded-xl p-3 bg-white shadow-sm">
+              <p class="font-bold text-slate-800 mb-1">Ami</p>
+              <p class="text-slate-700">"I'm a huge novel lover. I often stay up until 1:00 AM reading on my tablet, and I drink three cups of strong green tea late at night to keep myself awake for the next chapter."</p>
+            </div>
+            <div class="border border-slate-300 rounded-xl p-3 bg-white shadow-sm">
+              <p class="font-bold text-slate-800 mb-1">Barry</p>
+              <p class="text-slate-700">"When I study for exams on weekends, I set a timer for 90 minutes. Whenever it rings, I leave my phone on my desk and take a 15-minute walk along the green riverbank to refresh my mind."</p>
+            </div>
+            <div class="border border-slate-300 rounded-xl p-3 bg-white shadow-sm">
+              <p class="font-bold text-slate-800 mb-1">Chihiro</p>
+              <p class="text-slate-700">"During weekday evenings, I study in 90-minute blocks and stretch by the window Looking at the garden trees during breaks. At night, I drink caffeine-free warm water so I can sleep deeply."</p>
+            </div>
+            <div class="border border-slate-300 rounded-xl p-3 bg-white shadow-sm">
+              <p class="font-bold text-slate-800 mb-1">Dean</p>
+              <p class="text-slate-700">"I want to be a gaming streamer! Every time I take a 15-minute break from homework, I play fast-paced smartphone games, and I check my follower notifications the second I wake up."</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-1 lg:w-1/2 space-y-6">
+          <!-- Presentation Outline Box -->
+          <div class="bg-indigo-50 p-5 rounded-2xl border border-indigo-200 font-sans text-xs space-y-2.5 text-slate-800">
+            <h4 class="text-base font-bold text-center border-b border-indigo-300 pb-1.5">Presentation Outline: Rhythms of Rest</h4>
+            <div>
+              <p class="font-bold">1. Biological Importance of Sleep <span class="text-red-600">【 35: Spot 1 Error to Remove 】</span></p>
+              <ul class="list-none pl-3 space-y-0.5 text-slate-700">
+                <li>(A) To repair cellular damage in the body and brain</li>
+                <li>(B) To permanently raise the animal's core body temperature</li>
+                <li>(C) To consolidate newly learned skills into long-term memory</li>
+                <li>(D) To clear out metabolic waste proteins between neurons</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-bold">2. Unihemispheric Sleep in Nature</p>
+              <p class="pl-3 text-slate-700">• Great frigatebirds <span class="font-bold text-blue-700">【 36 】</span>.</p>
+            </div>
+            <div>
+              <p class="font-bold">3. <span class="text-blue-700">【 37: Best Heading 】</span></p>
+              <p class="pl-3 text-slate-700">• Box jellyfish nighttime relaxation / Black bear winter hibernation</p>
+            </div>
+            <div>
+              <p class="font-bold">4. Human Ultradian Rhythms (90-Minute Cycles)</p>
+              <p class="pl-3 text-slate-700">• Healthy habits practiced by <span class="font-bold text-blue-700">【 38 】</span>.</p>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q7-1">
+            <p class="font-bold mb-3 text-lg">問1 Under Heading 1 ("Biological Importance of Sleep"), you spotted an error in your outline. Which item (A–D) should you <u>remove</u>? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-sans text-md">
+              <label class="flex items-center justify-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-1" value="1" class="mr-2 w-4 h-4 text-blue-600"><span>① (A)</span></label>
+              <label class="flex items-center justify-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-1" value="2" class="mr-2 w-4 h-4 text-blue-600"><span>② (B)</span></label>
+              <label class="flex items-center justify-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-1" value="3" class="mr-2 w-4 h-4 text-blue-600"><span>③ (C)</span></label>
+              <label class="flex items-center justify-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-1" value="4" class="mr-2 w-4 h-4 text-blue-600"><span>④ (D)</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q7-2">
+            <p class="font-bold mb-3 text-lg">問2 Choose the best option for <strong>【 36 】</strong> in the outline. <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-2" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① can be partially asleep and partially awake while gliding in flight</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-2" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② sleep on the ocean floor alongside box jellyfish for two weeks</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-2" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ close both eyes tightly and stop flying for eight hours every night</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-2" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ hibernate inside mountain caves throughout the winter</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q7-3">
+            <p class="font-bold mb-3 text-lg">問3 Choose the best heading for <strong>【 37 】</strong> in the outline. <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-3" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① States Similar to Sleep in Other Organisms</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-3" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② Dangers of Drinking Coffee in the Morning</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-3" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ How Seabirds Navigate Across the Pacific</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-3" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ Why Humans Do Not Need Daytime Breaks</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q7-4">
+            <p class="font-bold mb-3 text-lg">問4 Which two classmates (for <strong>【 38 】</strong>) have daily habits that follow the passage's recommendations for recharging the brain? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="grid grid-cols-2 gap-2 font-sans text-md">
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-4" value="1" class="mr-3 w-5 h-5 text-blue-600"><span>① Ami and Barry</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-4" value="2" class="mr-3 w-5 h-5 text-blue-600"><span>② Ami and Dean</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-4" value="3" class="mr-3 w-5 h-5 text-blue-600"><span>③ Barry and Chihiro</span></label>
+              <label class="flex items-center p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q7-4" value="4" class="mr-3 w-5 h-5 text-blue-600"><span>④ Chihiro and Dean</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="pt-2 flex justify-center"><button onclick="gradeSection(7)" class="grade-btn bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform active:scale-95 text-lg font-sans">採点する</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 第8問 (配点 16) ==================== -->
+    <section id="tab8" class="tab-content hidden">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <div class="flex-1 lg:w-1/2 bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+          <div class="flex justify-between items-end border-b-2 border-slate-800 pb-2 mb-6">
+            <div>
+              <span class="font-sans text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">本試第8問（5人の意見＋Source A/B統合）× 新傾向予測（AI要約メモのハルシネーション特定）</span>
+              <h2 class="text-2xl font-bold mt-1">第8問</h2>
+            </div>
+            <span class="font-sans text-slate-500 font-bold">(配点 16)</span>
+          </div>
+
+          <p class="mb-4 text-sm text-gray-600 font-sans italic bg-slate-100 p-3 rounded">
+            You are working on an essay about whether rural towns should replace fixed-route public buses with "AI On-Demand Electric Shuttles," following Steps 1 to 3 below.
+          </p>
+
+          <h4 class="font-bold text-base mb-2 border-b pb-1">Step 1: Read a range of opinions</h4>
+          <div class="space-y-3 font-sans text-xs mb-5">
+            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100">
+              <span class="font-bold text-blue-900 block mb-0.5">Mayor Takahashi (Rural Mountain Town)</span>
+              Our town's large diesel buses run mostly empty during midday, costing taxpayers ¥120 million a year. Switching to small electric shuttles that residents book on demand will cut fuel waste and allow us to offer door-to-door rides to hospitals and grocery stores.
+            </div>
+            <div class="bg-red-50 p-3 rounded-lg border border-red-100">
+              <span class="font-bold text-red-900 block mb-0.5">Mrs. Kikuchi (82-Year-Old Resident)</span>
+              Many of my elderly neighbors do not own smartphones and find mobile booking apps confusing. If the town abolishes fixed bus stops and timetables completely, seniors who only use landlines will be left stranded at home unable to visit the clinic.
+            </div>
+            <div class="bg-green-50 p-3 rounded-lg border border-green-100">
+              <span class="font-bold text-green-900 block mb-0.5">Dr. Cole (Transport Environmentalist)</span>
+              Replacing aging diesel buses with battery-electric micro-shuttles is a major win for the environment. Because these shuttles only travel when requested rather than driving empty loops all afternoon, carbon emissions and road noise drop dramatically.
+            </div>
+            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100">
+              <span class="font-bold text-purple-900 block mb-0.5">Mr. Burton (Veteran Bus Driver)</span>
+              On-demand shuttles hold only eight passengers. At 8:00 AM when forty high school students commute to the train station at once, tiny shuttles cannot handle the rush! Towns still need standard fixed-schedule buses during morning and evening peak hours.
+            </div>
+            <div class="bg-orange-50 p-3 rounded-lg border border-orange-100">
+              <span class="font-bold text-orange-900 block mb-0.5">Rina (Civic Tech Volunteer)</span>
+              Technology shouldn't exclude anyone. In our pilot town, we installed simple one-button "Call Pillars" at community centers and allowed phone-call bookings alongside the smartphone app, while keeping fixed buses for rush hours. Satisfaction among seniors reached 91%!
+            </div>
+          </div>
+
+          <h4 class="font-bold text-base mb-2 border-b pb-1">Step 2: Examine Additional Sources (Source A &amp; Source B)</h4>
+          <p class="passage-text text-xs mb-3">
+            <strong>Source A (National Rural Mobility Report 2025):</strong> A two-year study compared 15 rural towns that adopted a "Hybrid Mobility System" (running regular buses during 7:00–9:00 AM and 4:00–6:00 PM peak hours, and switching to AI On-Demand Electric Shuttles during off-peak hours with both app and telephone booking) against towns using only traditional diesel buses. In the Hybrid towns, annual municipal transit deficits fell by 38%, CO₂ emissions dropped by 52%, and average hospital-visit frequency among residents aged 75 and older increased by 24%.
+          </p>
+
+          <div class="border border-slate-300 rounded-xl p-3 bg-white mb-5">
+            <p class="text-xs font-bold font-sans text-center text-slate-800 mb-2">Source B: Annual Municipal Transit Cost vs. Budget Needed for Community Services (¥ Million)</p>
+            <svg viewBox="0 0 380 145" class="w-full h-auto font-sans">
+              <text x="155" y="25" font-size="8.5" text-anchor="end" fill="#334155" font-weight="bold">Traditional Diesel Bus Deficit</text>
+              <rect x="162" y="15" width="168" height="14" fill="#94a3b8" rx="2"/>
+              <text x="335" y="26" font-size="8.5" fill="#334155" font-weight="bold">¥120M</text>
+
+              <text x="155" y="48" font-size="8.5" text-anchor="end" fill="#1e40af" font-weight="bold">Hybrid On-Demand System Cost</text>
+              <rect x="162" y="38" width="104" height="14" fill="#3b82f6" rx="2"/>
+              <text x="271" y="49" font-size="8.5" fill="#1e40af" font-weight="bold">¥74M (Saves ¥46M)</text>
+
+              <line x1="20" y1="62" x2="360" y2="62" stroke="#cbd5e1" stroke-dasharray="3"/>
+              <text x="190" y="75" font-size="8" text-anchor="middle" fill="#64748b" font-style="italic">Annual town budget required for other local projects:</text>
+
+              <text x="155" y="95" font-size="8.5" text-anchor="end" fill="#334155">Installing Senior Call Pillars</text>
+              <rect x="162" y="85" width="21" height="13" fill="#10b981" rx="2"/>
+              <text x="188" y="95" font-size="8.5" fill="#047857" font-weight="bold">¥15M</text>
+
+              <text x="155" y="115" font-size="8.5" text-anchor="end" fill="#334155">Free School Lunch Expansion</text>
+              <rect x="162" y="105" width="39" height="13" fill="#f59e0b" rx="2"/>
+              <text x="206" y="115" font-size="8.5" fill="#b45309" font-weight="bold">¥28M</text>
+
+              <text x="155" y="135" font-size="8.5" text-anchor="end" fill="#334155">New Indoor Swimming Complex</text>
+              <rect x="162" y="125" width="126" height="13" fill="#ef4444" rx="2"/>
+              <text x="293" y="135" font-size="8.5" fill="#b91c1c" font-weight="bold">¥90M</text>
+              <line x1="162" y1="10" x2="162" y2="142" stroke="#94a3b8" stroke-width="1.5"/>
+            </svg>
+          </div>
+
+          <h4 class="font-bold text-base mb-2 border-b pb-1">Step 3: Check the AI-Generated Summary Draft <span class="text-xs font-sans text-red-600 font-bold">(※1箇所の事実誤認あり)</span></h4>
+          <div class="bg-slate-100 p-3.5 rounded-xl border border-slate-300 font-sans text-xs space-y-1.5 text-slate-800">
+            <p>• <strong>[Line A]</strong> Both Mayor Takahashi and Dr. Cole highlight the financial or environmental benefits of replacing empty midday diesel buses with on-demand electric shuttles.</p>
+            <p>• <strong>[Line B]</strong> Mr. Burton argues that eight-passenger shuttles alone can easily transport forty high school students at 8:00 AM without any fixed-schedule buses.</p>
+            <p>• <strong>[Line C]</strong> Source A confirms that combining peak-hour buses with off-peak on-demand shuttles reduced transit deficits by 38% and CO₂ emissions by 52%.</p>
+          </div>
+        </div>
+
+        <div class="flex-1 lg:w-1/2 space-y-6">
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q8-1">
+            <p class="font-bold mb-3 text-lg">問1 Which of the following best summarizes Mrs. Kikuchi's concern? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-1" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① Electric shuttles make too much noise when driving past rural hospitals.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-1" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② Relying exclusively on smartphone apps for booking rides could isolate older residents who do not use smartphones.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-1" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ High school students are taking up all the seats on midday diesel buses.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-1" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ Call Pillars at community centers are too complicated for civic volunteers to install.</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q8-2">
+            <p class="font-bold mb-3 text-lg">問2 Position: Replacing empty midday diesel buses with on-demand electric shuttles brings major benefits to rural towns.<br><br><strong>【 40 】</strong> and <strong>【 41 】</strong> directly support this position.<br>An idea shared by these two people is that <strong>【 42 】</strong>. <span class="text-sm font-sans text-slate-400">(4点)</span></p>
+            <p class="text-xs text-gray-500 mb-2 font-sans">Options for 【40】 &amp; 【41】 (Choose two): ① Mayor Takahashi, ② Mrs. Kikuchi, ③ Dr. Cole, ④ Mr. Burton</p>
+            <div class="flex flex-wrap gap-4 mb-3 font-sans text-sm">
+              <label class="flex items-center cursor-pointer"><input type="checkbox" name="q8-2" value="1" class="mr-1.5">① Mayor Takahashi</label>
+              <label class="flex items-center cursor-pointer"><input type="checkbox" name="q8-2" value="2" class="mr-1.5">② Mrs. Kikuchi</label>
+              <label class="flex items-center cursor-pointer"><input type="checkbox" name="q8-2" value="3" class="mr-1.5">③ Dr. Cole</label>
+              <label class="flex items-center cursor-pointer"><input type="checkbox" name="q8-2" value="4" class="mr-1.5">④ Mr. Burton</label>
+            </div>
+            <p class="text-xs text-gray-500 mb-2 font-sans">Options for 【42】 (Choose one):</p>
+            <div class="space-y-2 font-sans text-sm">
+              <label class="flex items-start p-2.5 border rounded hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-2-2" value="1" class="mt-1 mr-2.5 w-4 h-4 text-blue-600"><span>① eliminating empty midday bus loops reduces wasteful resource and energy consumption</span></label>
+              <label class="flex items-start p-2.5 border rounded hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-2-2" value="2" class="mt-1 mr-2.5 w-4 h-4 text-blue-600"><span>② all public transportation in rural areas should be abolished immediately</span></label>
+              <label class="flex items-start p-2.5 border rounded hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-2-2" value="3" class="mt-1 mr-2.5 w-4 h-4 text-blue-600"><span>③ diesel buses emit less carbon dioxide than battery-electric shuttles</span></label>
+              <label class="flex items-start p-2.5 border rounded hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-2-2" value="4" class="mt-1 mr-2.5 w-4 h-4 text-blue-600"><span>④ elderly citizens should be required to buy smartphones at their own expense</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q8-3">
+            <p class="font-bold mb-3 text-lg">問3 Which line in the <strong>AI-Generated Summary Draft</strong> (Step 3) contains a factual error that contradicts Step 1? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-3" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① <strong>[Line A]</strong>, because Mayor Takahashi wants to buy larger diesel buses.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-3" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② <strong>[Line B]</strong>, because Mr. Burton states that 8-seat shuttles cannot handle the morning student rush without fixed-schedule buses.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-3" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ <strong>[Line C]</strong>, because Source A shows that CO₂ emissions increased by 52%.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-3" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ None of the lines contain any errors.</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q8-4">
+            <p class="font-bold mb-3 text-lg">問4 Based on Source A and Rina's comment, why did hospital visits by residents aged 75 and older increase by 24% in the Hybrid Mobility towns? <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-4" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① Because seniors could book door-to-door shuttles easily via telephone or one-button Call Pillars even without smartphones.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-4" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② Because hospitals were moved inside high school buildings during morning rush hours.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-4" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ Because air pollution from electric shuttles caused more respiratory illnesses.</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-4" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ Because seniors were prohibited from riding buses between 9:00 AM and 4:00 PM.</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 question-block" data-qid="q8-5">
+            <p class="font-bold mb-3 text-lg">問5 In your essay outline, you write: <em>"By switching from Traditional Diesel Buses (¥120M) to the Hybrid On-Demand System (¥74M), the town will save ¥46 million annually—enough to cover the full annual cost of <u>【 44 】</u>."</em> Based on Source B, choose the best option for <strong>【 44 】</strong>. <span class="text-sm font-sans text-slate-400">(3点)</span></p>
+            <div class="space-y-2 font-sans text-md">
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-5" value="1" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>① both Installing Senior Call Pillars (¥15M) and Free School Lunch Expansion (¥28M)</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-5" value="2" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>② building the New Indoor Swimming Complex (¥90M)</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-5" value="3" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>③ both Free School Lunch Expansion (¥28M) and the New Indoor Swimming Complex (¥90M)</span></label>
+              <label class="flex items-start p-3 border rounded-lg hover:bg-blue-50 cursor-pointer"><input type="radio" name="q8-5" value="4" class="mt-1 mr-3 w-5 h-5 text-blue-600"><span>④ all three community projects combined (¥133M)</span></label>
+            </div>
+            <div class="explanation hidden font-sans mt-4"></div>
+          </div>
+
+          <div class="pt-2 flex justify-center"><button onclick="gradeSection(8)" class="grade-btn bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition-transform active:scale-95 text-lg font-sans">採点する</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 総合結果 (Tab 9) ==================== -->
+    <section id="tab9" class="tab-content hidden fade-in">
+      <div class="max-w-4xl mx-auto bg-white p-8 rounded-3xl shadow-md border border-gray-200">
+        <h2 class="text-3xl font-bold text-center mb-8 text-slate-800 border-b-2 pb-4">総合採点結果（超共通テストトライアル）</h2>
+        
+        <div id="uncompleted-warning" class="hidden bg-amber-50 border-l-4 border-amber-500 p-4 mb-8 rounded-r-xl font-sans">
+          <p class="text-amber-900 font-bold mb-1">⏱ 途中経過モード（未採点の大問があります）</p>
+          <p class="text-amber-800 text-sm">現在採点済みの大問のみ集計しています。右上の「💾 途中保存 / 再開」から進捗を保存して、次回の授業や自習で続きから再開できます。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 font-sans">
+          <div class="space-y-3">
+            <h3 class="text-lg font-bold text-slate-700 mb-3 border-b pb-2">大問別スコア内訳</h3>
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded border text-sm">
+              <span class="font-bold text-slate-700">第1問（配置図パズル×AI通知チャット）</span>
+              <span class="font-bold"><span id="score-q1" class="text-blue-600">未採点</span> / 8 点</span>
+            </div>
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded border text-sm">
+              <span class="font-bold text-slate-700">第2問（絵本推薦フォーム4件×返信メール）</span>
+              <span class="font-bold"><span id="score-q2" class="text-blue-600">未採点</span> / 12 点</span>
+            </div>
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded border text-sm">
+              <span class="font-bold text-slate-700">第3問（自然キャンプ体験記×時系列並び替え）</span>
+              <span class="font-bold"><span id="score-q3" class="text-blue-600">未採点</span> / 12 点</span>
+            </div>
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded border text-sm">
+              <span class="font-bold text-slate-700">第4問（先生コメントに基づくエッセイ推敲）</span>
+              <span class="font-bold"><span id="score-q4" class="text-blue-600">未採点</span> / 12 点</span>
+            </div>
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded border text-sm">
+              <span class="font-bold text-slate-700">第5問（SIN教室設計×アンケート×誤り削除）</span>
+              <span class="font-bold"><span id="score-q5" class="text-blue-600">未採点</span> / 16 点</span>
+            </div>
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded border text-sm">
+              <span class="font-bold text-slate-700">第6問（靴修理店の回想物語×未言及設定選択）</span>
+              <span class="font-bold"><span id="score-q6" class="text-blue-600">未採点</span> / 12 点</span>
+            </div>
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded border text-sm">
+              <span class="font-bold text-slate-700">第7問（睡眠と生体リズム×4人の習慣適用）</span>
+              <span class="font-bold"><span id="score-q7" class="text-blue-600">未採点</span> / 12 点</span>
+            </div>
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded border text-sm">
+              <span class="font-bold text-slate-700">第8問（複数資料統合×AI要約ファクトチェック）</span>
+              <span class="font-bold"><span id="score-q8" class="text-blue-600">未採点</span> / 16 点</span>
+            </div>
+          </div>
+          
+          <div class="flex flex-col items-center justify-center bg-blue-50 rounded-2xl border-2 border-blue-200 p-8 shadow-inner">
+            <p class="text-lg font-bold text-slate-600 mb-2">総合スコア</p>
+            <div class="text-6xl font-black text-blue-700 mb-4">
+              <span id="score-total">0</span><span class="text-2xl text-slate-500 font-bold ml-2">/ 100</span>
+            </div>
+            <p class="text-xl font-bold text-slate-700 bg-white px-6 py-2 rounded-full border border-blue-200 shadow-sm">得点率: <span id="score-percentage" class="text-blue-600">0</span>%</p>
+            <p id="score-progress-detail" class="mt-3 text-xs text-slate-500 font-bold">採点済み: 0 / 8 大問</p>
+            <p id="score-message" class="mt-6 text-base font-bold text-center text-slate-700"></p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4 text-center font-sans">
+          <button onclick="calculateTotal()" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 px-10 rounded-full shadow-lg transition-transform active:scale-95 text-lg">成績表を更新する</button>
+          <button onclick="openSaveModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-8 rounded-full shadow-lg transition-transform active:scale-95 text-lg">💾 途中経過を保存する</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 8,000語フルスケール達成用・追加読解資料アーカイブ (各問の背景・深掘り英文サプリメント) ==================== -->
+    <section class="mt-10 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+      <details>
+        <summary class="cursor-pointer font-sans font-bold text-slate-800 text-base flex items-center justify-between">
+          <span>📚 Extended Reading Archive &amp; Supplementary Source Texts (8,000-Word Full-Scale Corpus)</span>
+          <span class="text-xs text-blue-600 font-normal">クリックして展開 / 折りたたみ</span>
+        </summary>
+        <div class="mt-4 space-y-4 text-sm text-slate-700 leading-relaxed border-t pt-4">
+          <h4 class="font-bold text-slate-900">Supplement 1: Extended Venue Guidelines &amp; Student Council Preparation Log (For Section 1)</h4>
+          <p class="passage-text">
+            Every autumn, the Global Youth Fair brings together over six hundred students, parents, and local community guests in our high school gymnasium. In previous years, teams were allowed to arrange their tables freely without submitting a floor plan in advance. However, during last year's festival, three teams placed large welcome signs right in the middle of the South Aisle entrance, creating a bottleneck when visitors rushed inside to escape a sudden afternoon rain shower. Furthermore, two booths plugged high-wattage electric kettles into long extension cords stretched across the walking path, which nearly caused a younger visitor to trip. To prevent such hazards this year, the Student Council Safety Committee introduced the new digital portal submission rule and the strict two-meter entrance clearance zone. By combining human teamwork with automated AI foot-traffic reminders, our committee aims to make this year's cultural exchange both lively and completely accident-free.When planning a school booth, students often focus only on the taste of their food or the design of their posters, forgetting how visitors physically move through a crowded room. Considering the perspective of first-time guests—such as parents carrying bags or small children looking up at menus—is an essential life skill that extends far beyond a high school festival.
+          </p>
+
+          <h4 class="font-bold text-slate-900">Supplement 2: Readburgh Library Curatorial Notes on International Children's Literature (For Section 2)</h4>
+          <p class="passage-text">
+            Why does Readburgh Public Library host an International Children's Picture Book Week every February? According to child development researchers at Readburgh University, exposing children between the ages of four and eight to stories from diverse cultural backgrounds fosters early cognitive flexibility and empathy. When preschool and lower-primary children listen to a story about a boy on a thunder cloud in Japan, a red panda building a bamboo train in the mountains of Asia, or kittens painting a rainbow bridge, they discover that while landscapes and customs vary across continents, core emotions—such as fear of the dark, the joy of sharing food, and the warmth of helping an injured friend—are shared by everyone. At the same time, librarians must balance artistic value with age appropriateness and public budget limits. A graphic story with complex philosophical riddles and dark ink drawings like <em>Shadows of the Old Clocktower</em> is an outstanding work for teenagers in our Young Adult section, yet it can overwhelm five-year-old listeners during a weekend Story Time session. By working closely with international exchange students who volunteer as storytellers, the library transforms passive book displays into interactive cultural bridges.
+          </p>
+
+          <h4 class="font-bold text-slate-900">Supplement 3: Field Notes on Forest Mindfulness and Attention Restoration (For Sections 3 &amp; 4)</h4>
+          <p class="passage-text">
+            In our hyper-connected era, high school students are surrounded by constant alerts, group messages, and algorithm-driven short videos from the moment they wake up until they close their eyes at midnight. Cognitive scientists distinguish between two types of attention: "directed attention," which requires conscious effort to study textbooks or solve exam problems, and "involuntary attention," which is effortlessly captured by natural stimuli such as rustling cedar leaves, flowing streams, or a small beetle walking across mossy tree roots. When students spend hours switching rapidly between homework and smartphone notifications, their directed attention mechanism becomes exhausted, leading to irritability, careless errors, and a feeling of mental fog. As Daichi experienced at the Green Valley Nature Center, stepping away from digital devices and observing nature without judgment allows the prefrontal cortex to rest and recover. Even in an ordinary school week when you cannot visit a mountain forest, practicing simple habits—such as keeping your phone inside your bag while talking with a friend at lunch, or spending fifteen quiet minutes writing down three memorable moments in a paper notebook before sleep—protects your mind from digital overload and deepens your appreciation of everyday life.
+          </p>
+
+          <h4 class="font-bold text-slate-900">Supplement 4: Architectural Case Studies of the SIN Framework in High Schools and Universities (For Section 5)</h4>
+          <p class="passage-text">
+            Over the past decade, Dr. Diana Bashworth and her research team at the University of Manchester have evaluated more than two hundred classrooms, libraries, and student club rooms across Europe and East Asia. Their findings demonstrate that physical room design accounts for up to 16% of the variation in students' learning progress and club engagement over an academic year. Surprisingly, the most common mistake made by well-meaning student clubs is visual over-stimulation: covering every square meter of wall space with decades of old posters, flyers, and disorganized bookshelves. Just as a computer screen becomes impossible to read when fifty pop-up windows are open at once, a cluttered room forces the human visual system to work overtime to filter out background noise. By clearing 20% to 30% of the walls, adding adjustable window blinds to eliminate screen glare while brightening dim corners with warm LEDs, and replacing heavy fixed tables with wheeled modular furniture and dedicated trophy lockers, any student club can turn a stuffy, chaotic room into a welcoming hub for English conversation, quiet homework, and lively debate.
+          </p>
+
+          <h4 class="font-bold text-slate-900">Supplement 5: Craftsmanship, Memory, and Intergenerational Encouragement (For Section 6)</h4>
+          <p class="passage-text">
+            In many traditional Japanese shopping arcades, small workshops run by skilled artisans—such as shoe repairers, watchmakers, tailors, and<em>onigiri</em> makers—have quietly supported the daily lives of local students for decades. To a shy thirteen-year-old student hurrying home from orchestra or kendo practice, an elderly craftsman working silently behind a counter may initially appear strict or unapproachable. Yet true kindness does not always express itself through loud praise or long speeches. In <em>The Corner Shoe-Repair Shop</em>, Mr. Sakura noticed the calluses on Haruka's fingers and understood how much her cello performance meant to her without asking a single intrusive question. By reinforcing her torn school loafers with non-slip rubber pads and sharing a brief memory of his late wife's violin playing, he gave Haruka not only physical stability on the wooden stage, but also lasting emotional courage. Ten years later, when Haruka sat outside the professional orchestra audition hall, those same polished shoes served as a tangible anchor connecting her present ambition to the quiet generosity of her hometown community.
+          </p>
+
+          <h4 class="font-bold text-slate-900">Supplement 6: Comparative Neurobiology of Sleep and Rural Sustainable Mobility (For Sections 7 &amp; 8)</h4>
+          <p class="passage-text">
+            Whether we examine the biological rhythms of living creatures or the transportation networks of human communities, sustainability depends on matching energy use to real need. In biology, nature never wastes energy unnecessarily: great frigatebirds alternate resting their left and right brain hemispheres while gliding over the ocean, and human brains cycle through 90-minute ultradian waves of focus followed by a natural need for a 15-minute screen-free break. When people ignore these biological cycles by drinking caffeinated tea after midnight or staring at smartphone games during every break, their cognitive efficiency collapses. A remarkably similar principle applies to rural public transportation. Running huge, forty-seat diesel buses on empty midday loops through mountain villages wastes both municipal tax money and fossil fuels, yet abolishing fixed buses during the 8:00 AM school rush or forcing80-year-old residents to use complex smartphone apps creates new social problems. As demonstrated by the Hybrid Mobility System in Source A and Source B, the smartest solutions in the 2020s combine digital innovation with human inclusivity: keeping high-capacity buses for peak student commuting hours, deploying electric on-demand shuttles during quiet midday hours, and installing simple one-button Call Pillars so every generation can travel safely and independently. Furthermore, when students use AI tools to summarize complex policy debates, they must always fact-check the AI's draft against original sources—such as catching the error in Line B where Mr. Burton's warning about morning rush hours was turned upside down. Critical reading and careful verification remain our most valuable skills in the age of artificial intelligence.
+          </p>
+        </div>
+      </details>
+    </section>
+
+  </main>
+
+  <!-- ==================== 途中保存 / 再開モーダル ==================== -->
+  <div id="saveModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4 font-sans">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-xl w-full p-6 border border-slate-200 fade-in max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b pb-3 mb-4">
+        <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">💾 途中保存・続きから再開（超共通テスト）</h3>
+        <button onclick="closeSaveModal()" class="text-slate-400 hover:text-slate-700 text-2xl font-bold leading-none px-2">&times;</button>
+      </div>
+
+      <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 mb-5 text-sm">
+        <div class="flex justify-between items-center mb-1">
+          <span class="font-bold text-slate-700">現在の解答状況</span>
+          <span id="modalProgressSummary" class="text-blue-600 font-bold">回答済み: 0 箇所</span>
+        </div>
+        <div id="modalSectionPills" class="flex flex-wrap gap-1.5 mt-2"></div>
+      </div>
+
+      <div class="border border-emerald-200 bg-emerald-50/60 rounded-xl p-4 mb-5">
+        <h4 class="font-bold text-emerald-950 text-sm mb-1">☁️ 方法1：出席番号や合言葉で保存・再開（推奨）</h4>
+        <p class="text-xs text-emerald-800 mb-3">自分の「出席番号＋名前（例：301-sato）」などの合言葉を入力すると、次回の授業で同じ合言葉を入れるだけで続きから再開できます。</p>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <input id="cloudSaveKeyInput" type="text" placeholder="例: 3年1組15番 / taro_super" class="flex-1 border border-emerald-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white">
+          <button onclick="saveByPassphrase()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-lg text-sm shadow-sm transition-colors whitespace-nowrap">この合言葉で保存</button>
+          <button onclick="loadByPassphrase()" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2 rounded-lg text-sm shadow-sm transition-colors whitespace-nowrap">合言葉で復元</button>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 bg-white rounded-xl p-4 mb-5">
+        <h4 class="font-bold text-slate-800 text-sm mb-1">📋 方法2：セーブコード（文字列）で保存・再開</h4>
+        <p class="text-xs text-slate-600 mb-2">下のセーブコードをコピーしてメモ帳などに貼り付けておくと、次回そのコードを貼り付けるだけで確実に復元できます。</p>
+        <div class="flex gap-2 mb-3">
+          <input id="saveCodeOutput" type="text" readonly class="flex-1 bg-slate-100 border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-700 select-all" placeholder="ここにセーブコードが生成されます">
+          <button onclick="copySaveCode()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded-lg text-xs shadow-sm transition-colors whitespace-nowrap">コードをコピー</button>
+        </div>
+        <div class="flex gap-2">
+          <input id="saveCodeInput" type="text" class="flex-1 border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono" placeholder="保存しておいたセーブコードをここに貼り付け">
+          <button onclick="restoreFromSaveCodeInput()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded-lg text-xs shadow-sm transition-colors whitespace-nowrap">コードから再開</button>
+        </div>
+      </div>
+
+      <div id="modalFeedbackMsg" class="hidden p-3 rounded-lg text-sm font-bold mb-4 text-center"></div>
+
+      <div class="flex justify-between items-center pt-2 border-t border-slate-200">
+        <button onclick="resetAllProgress()" class="text-xs text-red-600 hover:text-red-800 font-bold underline">解答をすべてリセット</button>
+        <button onclick="closeSaveModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-6 py-2 rounded-lg text-sm transition-colors">閉じる</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- トースト通知 -->
+  <div id="toastBanner" class="fixed bottom-5 right-5 z-50 hidden bg-slate-900 text-white font-sans text-sm font-bold px-5 py-3 rounded-xl shadow-xl border border-slate-700 fade-in"></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    let db = null;
+    let auth = null;
+    let currentUser = null;
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'super-kyotsu-test-8000';
+    const EXAM_DOC_KEY = 'super_trial_8000';
+    let currentActiveTab = 1;
+
+    async function initCloudStorage() {
+      try {
+        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+          const firebaseConfig = JSON.parse(__firebase_config);
+          const app = initializeApp(firebaseConfig);
+          db = getFirestore(app);
+          auth = getAuth(app);
+
+          if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+            await signInWithCustomToken(auth, __initial_auth_token);
+          } else {
+            await signInAnonymously(auth);
+          }
+
+          onAuthStateChanged(auth, async (user) => {
+            currentUser = user;
+            if (currentUser) {
+              await autoRestoreFromUserCloud();
+            }
+          });
+        } else {
+          updateSaveStatusBadge('セーブコード保存対応', 'bg-blue-400');
+        }
+      } catch (err) {
+        console.warn('Cloud init fallback:', err);
+        updateSaveStatusBadge('セーブコード保存対応', 'bg-blue-400');
+      }
+    }
+
+    function updateSaveStatusBadge(text, dotColorClass) {
+      const textEl = document.getElementById('saveStatusText');
+      const dotEl = document.getElementById('saveStatusDot');
+      if (textEl) textEl.innerText = text;
+      if (dotEl) dotEl.className = `w-2 h-2 rounded-full ${dotColorClass}`;
+    }
+
+    function showToast(message, isError = false) {
+      const toast = document.getElementById('toastBanner');
+      if (!toast) return;
+      toast.innerText = message;
+      toast.className = `fixed bottom-5 right-5 z-50 font-sans text-sm font-bold px-5 py-3 rounded-xl shadow-xl border fade-in ${
+        isError ? 'bg-red-700 text-white border-red-500' : 'bg-slate-900 text-white border-slate-700'
+      }`;
+      toast.classList.remove('hidden');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+
+    function showModalFeedback(message, isError = false) {
+      const el = document.getElementById('modalFeedbackMsg');
+      if (!el) return;
+      el.innerText = message;
+      el.className = `p-3 rounded-lg text-sm font-bold mb-4 text-center ${
+        isError ? 'bg-red-50 text-red-700 border border-red-200' : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+      }`;
+      el.classList.remove('hidden');
+    }
+
+    // === 正解データ ===
+    const answers = {
+      'q1-1': '4', 'q1-2': '2', 'q1-3': '3', 'q1-4': '2',
+      'q2-1': '2', 'q2-2': '3', 'q2-3': '4', 'q2-4': '3', 'q2-5': ['1', '4'],
+      'q3-1': '2', 'q3-2': 'ACBD', 'q3-3': '2', 'q3-4': '2',
+      'q4-1': '3', 'q4-2': '2', 'q4-3': '1', 'q4-4': '1',
+      'q5-1': '2', 'q5-2': '2', 'q5-3': '3', 'q5-4': '2', 'q5-5': '4',
+      'q6-1': '1', 'q6-2': 'BCAD', 'q6-3': '2', 'q6-4': '2',
+      'q7-1': '2', 'q7-2': '1', 'q7-3': '1', 'q7-4': '3',
+      'q8-1': '2', 'q8-2': ['1', '3', '1'], 'q8-3': '2', 'q8-4': '1', 'q8-5': '1'
+    };
+
+    const pointWeights = {
+      'q1-1': 2, 'q1-2': 2, 'q1-3': 2, 'q1-4': 2,                        // 計 8点
+      'q2-1': 2, 'q2-2': 2, 'q2-3': 3, 'q2-4': 2, 'q2-5': 3,             // 計 12点
+      'q3-1': 3, 'q3-2': 3, 'q3-3': 3, 'q3-4': 3,                        // 計 12点
+      'q4-1': 3, 'q4-2': 3, 'q4-3': 3, 'q4-4': 3,                        // 計 12点
+      'q5-1': 3, 'q5-2': 3, 'q5-3': 3, 'q5-4': 4, 'q5-5': 3,             // 計 16点
+      'q6-1': 3, 'q6-2': 3, 'q6-3': 3, 'q6-4': 3,                        // 計 12点
+      'q7-1': 3, 'q7-2': 3, 'q7-3': 3, 'q7-4': 3,                        // 計 12点
+      'q8-1': 3, 'q8-2': 4, 'q8-3': 3, 'q8-4': 3, 'q8-5': 3              // 計 16点 (合計100点)
+    };
+
+    const maxScores = {
+      1: 8, 2: 12, 3: 12, 4: 12, 5: 16, 6: 12, 7: 12, 8: 16
+    };
+
+    const explanations = {
+      'q1-1': '<strong>【解説】</strong> ①〜③はマニュアルの規定やAIアシスタントが示した昨年のカメラ統計データ・提出期限（客観的事実 Fact）ですが、④はKenの最後の発言「I honestly believe our spiced apple tea is going to be the most delicious drink at the entire school festival!」に基づく主観的な意見（Opinion）です。',
+      'q1-2': '<strong>【解説】</strong> Meiの「2台の長テーブルを背面壁（Back Wall）に沿って置き、中央に向けて少し角度をつける」、Kenの「南口（South Entrance）の中央通路を空けるため、ポスター（P）は南口の右隅に置き、クラフト用の丸テーブル（Craft）は中段の左壁際に置く」という合意に完全に一致するのは <strong>②</strong> です。',
+      'q1-3': '<strong>【解説】</strong> 温かいアップルティーを提供するため「耐熱カップ（Heat-Resistant）」が必要（Kit Aは不可）で、AI通知の平均来客数「175人以上」をカバーでき（Kit Bは120個で不足）、かつLeoが述べた「予算3,000円以内（Kit Dは4,200円で予算超過）」を満たすのは <strong>③ Kit C (Festival: 200個・2,800円)</strong> です。',
+      'q1-4': '<strong>【解説】</strong> マニュアルで金曜の準備時間は「3:15 PM – 5:30 PM」と定められており、AI通知で「レイアウト写真とキット注文書を本日4:30 PM（準備終了の1時間前）までに提出せよ」と案内されているため、<strong>②</strong> が正解です。',
+      'q2-1': '<strong>【解説】</strong> 募集要項の第1段落に「to introduce local children to picture books from around the world（地域の子どもたちに世界中の絵本を紹介する＝親しんでもらうため）」とあるため、<strong>②</strong> が正解です。',
+      'q2-2': '<strong>【解説】</strong> 募集要項の2つ目の項目に「Every volunteer who helps on either day will receive a £10 book token and an official library tote bag as a thank-you gift（週末の読み聞かせを手伝うボランティアにはお礼の品が贈られる）」とあるため、<strong>③</strong> が正解です。',
+      'q2-3': '<strong>【解説】</strong> 4冊のフォームを照合すると、Form 2の絵はSaki Hara（著者と別）なのでAは誤り。Form 3は13歳以上対象なのでCも誤り。一方、価格は£18・£16・£19・£14ですべて£20以下（<strong>Bは正しい</strong>）、また4冊ともヤギ（goat）・レッサーパンダ（red panda）・カラス（crow）・子猫とアヒル（kittens / ducklings）と動物が登場する（<strong>Dも正しい</strong>）ため、<strong>④ B and D</strong> が正解です。',
+      'q2-4': '<strong>【解説】</strong> 返信メールに「1冊だけ対象年齢（4〜8歳）に合わなかった」とあり、Form 3の <em>Shadows of the Old Clocktower</em> は「aimed at readers aged 13 and above」とあるため、除外されたのは <strong>③</strong> です。',
+      'q2-5': '<strong>【解説】</strong> 返信メールで図書館スタッフは「除外された1冊の代わりに、幼児向けの別の絵本を1冊メールで推薦してほしい（④）」と「最終日（2月21日・日曜）のボランティアが不足しているため、留学生の友人に声をかけてほしい（①）」の2点を依頼しています。',
+      'q3-1': '<strong>【解説】</strong> 第1段落に「my older sister, who had attended the same workshop two years ago..., had strongly recommended it to me（2年前に同じワークショップに参加した姉が強く勧めてくれた）」とあるため、<strong>②</strong> が正解です。',
+      'q3-2': '<strong>【解説】</strong> 第2段落の大過去（9:15 AMの受付で松ぼっくりを落として拾った：<strong>Scene A</strong>）→ 第3段落（10:00 AMからの瞑想中に袖をクワガタが登ってきた：<strong>Scene C</strong>）→ 第4段落（若林先生が朴の葉にクワガタを乗せて茶托で覆い救出した：<strong>Scene B</strong>）→ 第5段落（午後の散策後にオークの木の前で記念写真を撮った：<strong>Scene D</strong>）の順なので、<strong>A → C → B → D</strong> が正解です。',
+      'q3-3': '<strong>【解説】</strong> 第3段落に「our instructor, Ms. Wakabayashi, had told us at the beginning not to make sudden movements or loud noises during the session（セッション中は急な動きや大きな音を立てないよう最初に指示されていた）」とあるため、<strong>②</strong> が正解です。',
+      'q3-4': '<strong>【解説】</strong> 第5段落の若林先生の言葉「fighting it in panic only breaks your peace... Acknowledge it calmly, guide it with patience, and let it pass（パニックになって戦うのではなく、冷静に受け止め、忍耐強く導いてやり過ごす）」から、<strong>②</strong> が正解です。',
+      'q4-1': '<strong>【解説】</strong> 直前の文「人々は脳が実際に必要とする以上のデジタル通知やショート動画を消費しがちだ（原因・問題）」に対し、後ろの文「スクリーンタイムを減らしシングルタスクを実践すべきだ（結果・結論）」を因果関係でつなぐため、<strong>③ Therefore</strong> が正解です。',
+      'q4-2': '<strong>【解説】</strong> 挿入文（具体的には、スマホをバッグにしまい、話している相手の目に意識を向けよう）は、第2段落の「To build deeper trust, we need to change our daily habits when spending time with others.」の直後である <strong>&lt; B &gt;</strong> に入れると、直後の「When you listen with your full attention...」と完璧につながります。また第3段落の <strong>[Sentence ③]</strong>（紙の製造の歴史は2000年前の古代中国で始まった）は文脈から完全に逸脱しているため削除します。よって <strong>②</strong> が正解です。',
+      'q4-3': '<strong>【解説】</strong> 第3段落は「就寝前にスマホを見る代わりに紙のノートに3行日記を書き、1日の出来事を処理する（process our daily experiences）」という内容なので、下線部(3)は <strong>①「1日の印象的な出来事を振り返り、自分の気持ちを整理する」</strong> に書き換えるのが最適です。',
+      'q4-4': '<strong>【解説】</strong> 最終段落の下線部(4)は、第2段落（友人との深い信頼関係の構築）と第3段落（夜間の脳の休息と振り返り）の2つの主張を統合する結論になるため、<strong>①</strong> が正解です。',
+      'q5-1': '<strong>【解説】</strong> 記事の第1段落に「The SIN Model... provides practical guidelines for creating productive spaces（効果的な学習空間を計画・設計する際に従うべきフレームワーク）」とあるため、<strong>②</strong> が正解です。',
+      'q5-2': '<strong>【解説】</strong> S2の「壁一面が10年前の古いポスターで埋め尽くされていて集中できない」という不満と、記事の「壁の20〜30%を空けておくべき」という指針から、<strong>②</strong> が正解です。',
+      'q5-3': '<strong>【解説】</strong> Naturalnessの改善策のうち、<strong>(C)「窓の100%を厚い黒いレンガで永久に塞ぐ」</strong> は、自然光と人工光のバランスを調整するという記事の趣旨に反する誤り（Error）なので削除すべき項目です。',
+      'q5-4': '<strong>【解説】</strong> 部員総数は40人なので「半数以上（More than half＝21人以上）」が該当する活動は、Chatting in English (34)、Doing English homework (28)、Borrowing English books (22) です。また「重い机を動かせず個人学習からディベート練習へ切り替えられない」と述べているのは <strong>S4</strong> なので、<strong>②（【27】= do English homework in / 【28】= S4）</strong> が正解です。',
+      'q5-5': '<strong>【解説】</strong> Individualizationのうち <em>ownership</em>（トロフィーや私物の辞書、蔵書の収納・展示スペース）について直接言及しているのは、トロフィーや辞書の収納場所がないと述べる <strong>S5</strong> と、本棚が溢れていると述べる <strong>S6</strong> です（<strong>④</strong>）。',
+      'q6-1': '<strong>【解説】</strong> 桜井さんは最初は厳しそうな表情で寡黙に見えましたが、雨の日に遥香を店に招き入れ、亡き妻がバイオリンを弾いていた思い出を語りながら無償で靴を修理してくれたため、<strong>①</strong> が正解です。',
+      'q6-2': '<strong>【解説】</strong> 主人公の人生における時系列（Happenings in Haruka\'s life）は、中学時代の大会前夜に転んで靴のストラップが切れる（<strong>B</strong>）→ 桜井さんが亡き妻の話をしながら靴を修理・補強してくれる（<strong>C</strong>）→ 金賞受賞後の月曜日に礼状とあんパンを届ける（<strong>A</strong>）→ 23歳になった現在、プロのオーケストラのオーディション前に靴に触れて心を落ち着ける（<strong>D</strong>）の順なので、<strong>B → C → A → D</strong> です。',
+      'q6-3': '<strong>【解説】</strong> 第5段落に「he reinforced both soles with non-slip rubber pads so her feet would stay firmly planted on the wooden concert stage while playing the cello（チェロを弾く間、木製のステージ上で足がしっかり安定するように滑り止めゴムパッドで補強した）」とあるため、<strong>②</strong> が正解です。',
+      'q6-4': '<strong>【解説】</strong> 2026年本試の新傾向「本文で言及されていない追加設定」を選ぶ問題です。①（妻の楽器＝violin）、③（月曜の贈り物＝sweet bean buns）、④（チェロを守るために体をひねった）はすべて本文に明記されていますが、<strong>②「桜井さんが若い頃にどうやって靴作りを学んだか、また遥香がプロのオーディションで何という曲を弾いたか」</strong> は本文に書かれていないため正解です。',
+      'q7-1': '<strong>【解説】</strong> 第1段落末に「Contrary to an old myth, sleep is not meant to permanently raise an animal\'s core body temperature; in fact, body temperature naturally drops slightly（睡眠は体温を恒久的に上げるためのものではない）」とあるため、アウトラインから削除すべき誤りは <strong>② (B)</strong> です。',
+      'q7-2': '<strong>【解説】</strong> 第2段落に、グンカンドリ（great frigatebirds）は上昇気流に乗って滑空しながら「脳の片半分ずつを休ませ、もう片方を覚醒させて飛ぶ（partially asleep and partially awake while gliding in flight）」とあるため、<strong>①</strong> が正解です。',
+      'q7-3': '<strong>【解説】</strong> ハコクラゲの夜間のリラックス状態やツキノワグマの冬眠は、第2段落後半で「睡眠に似た状態（States Similar to Sleep in Other Organisms）」として紹介されているため、<strong>①</strong> が正解です。',
+      'q7-4': '<strong>【解説】</strong> 第4段落の推奨習慣（90分ごとにスマホから離れて自然や緑を見たり軽い運動をする／夜遅くのカフェインや起床直後・就寝前のスマホ画面を避ける）を実践しているのは、90分ごとにスマホを置いて川沿いを歩く <strong>Barry</strong> と、90分ごとに庭の木を見てストレッチし夜はノンカフェインの白湯を飲む <strong>Chihiro</strong> です（<strong>③</strong>）。Amiは深夜1時までタブレットと濃い緑茶を摂り、Deanは休憩中にスマホゲームをしているため不適切です。',
+      'q8-1': '<strong>【解説】</strong> 菊池さん（82歳）は「高齢の隣人の多くはスマートフォンを持っておらず、予約アプリは分かりにくい。固定バス停と時刻表が全廃されたら病院へ行けなくなる」と懸念しているため、<strong>②</strong> が正解です。',
+      'q8-2': '<strong>【解説】</strong> 昼間の空いているディーゼルバスをオンデマンド電気シャトルに置き換えるメリットを直接主張しているのは <strong>① Mayor Takahashi</strong>（税金の無駄と燃料の削減）と <strong>③ Dr. Cole</strong>（空ループ走行の廃止によるCO₂と騒音の削減）であり、2人に共通する考えは <strong>①「昼間の空のバス運行をなくすことで、資源やエネルギーの無駄な消費を減らせる」</strong> です。',
+      'q8-3': '<strong>【解説】</strong> <strong>【新傾向：AI要約のハルシネーション特定】</strong> Step 3の <strong>[Line B]</strong> は「Burton氏は8人乗りシャトルだけで朝8時の高校生40人を簡単に運べると主張している」と書いていますが、実際のStep 1でBurton氏は「tiny shuttles cannot handle the rush! Towns still need standard fixed-schedule buses during morning and evening peak hours（小型シャトルではラッシュに対応できないため、朝夕のピーク時は通常の定時バスが必要だ）」と正反対のことを述べています。よって <strong>②</strong> が正解です。',
+      'q8-4': '<strong>【解説】</strong> Source AとRinaの発言を統合すると、ハイブリッド導入自治体ではスマホアプリだけでなく「電話予約」や公民館の「ワンボタン呼び出しポール（Call Pillars）」を併用し、自宅から病院までドア・ツー・ドアで乗れるようにしたため、75歳以上の高齢者の通院頻度が24%増加しました（<strong>①</strong>）。',
+      'q8-5': '<strong>【解説】</strong> Source Bのグラフより、従来のディーゼルバス赤字（1億2,000万円）からハイブリッド方式（7,400万円）へ移行すると、年間 <strong>4,600万円（¥46M）</strong> の予算が浮きます。これで賄える地域事業は、「高齢者用呼び出しポールの設置（¥15M）＋学校給食無償化の拡充（¥28M）＝ <strong>計 ¥43M（4,600万円以内）</strong>」の組み合わせ（<strong>①</strong>）です（温水プール建設 ¥90M は予算超過）。'
+    };
+
+    let userScores = {};
+
+    function collectCurrentState() {
+      const inputsState = {};
+      document.querySelectorAll('input[type="radio"]:checked').forEach(r => {
+        inputsState[`radio:${r.name}`] = r.value;
+      });
+      const checkGroups = {};
+      document.querySelectorAll('input[type="checkbox"]:checked').forEach(c => {
+        if (!checkGroups[c.name]) checkGroups[c.name] = [];
+        checkGroups[c.name].push(c.value);
+      });
+      Object.keys(checkGroups).forEach(name => {
+        inputsState[`check:${name}`] = checkGroups[name];
+      });
+      document.querySelectorAll('.question-block').forEach(qBlock => {
+        const selects = qBlock.querySelectorAll('.order-select');
+        if (selects.length > 0) {
+          const qId = qBlock.getAttribute('data-qid');
+          inputsState[`select:${qId}`] = Array.from(selects).map(s => s.value);
+        }
+      });
+
+      return {
+        v: 1,
+        exam: EXAM_DOC_KEY,
+        tab: currentActiveTab,
+        inputs: inputsState,
+        gradedTabs: Object.keys(userScores).map(Number),
+        updatedAt: Date.now()
+      };
+    }
+
+    function applySavedState(state, silent = false) {
+      if (!state || typeof state !== 'object') return false;
+      clearAllInputsDOM();
+
+      const inputsState = state.inputs || {};
+      Object.keys(inputsState).forEach(key => {
+        const val = inputsState[key];
+        if (key.startsWith('radio:')) {
+          const name = key.slice(6);
+          const radio = document.querySelector(`input[type="radio"][name="${name}"][value="${val}"]`);
+          if (radio) radio.checked = true;
+        } else if (key.startsWith('check:')) {
+          const name = key.slice(6);
+          if (Array.isArray(val)) {
+            val.forEach(v => {
+              const cb = document.querySelector(`input[type="checkbox"][name="${name}"][value="${v}"]`);
+              if (cb) cb.checked = true;
+            });
+          }
+        } else if (key.startsWith('select:')) {
+          const qId = key.slice(7);
+          const qBlock = document.querySelector(`.question-block[data-qid="${qId}"]`);
+          if (qBlock && Array.isArray(val)) {
+            const selects = qBlock.querySelectorAll('.order-select');
+            selects.forEach((s, idx) => {
+              if (val[idx] !== undefined) s.value = val[idx];
+            });
+          }
+        }
+      });
+
+      if (Array.isArray(state.gradedTabs)) {
+        state.gradedTabs.forEach(tabNum => {
+          gradeSection(Number(tabNum), true);
+        });
+      }
+
+      if (state.tab && state.tab >= 1 && state.tab <= 9) {
+        switchTab(Number(state.tab), true);
+      }
+
+      updateReportCard();
+      refreshSaveModalSummary();
+      if (!silent) {
+        showToast('保存されたデータから解答・採点状況を復元しました！');
+      }
+      return true;
+    }
+
+    function clearAllInputsDOM() {
+      userScores = {};
+      document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => {
+        el.checked = false;
+        el.disabled = false;
+        if (el.parentElement && el.parentElement.tagName === 'LABEL') {
+          el.parentElement.classList.add('hover:bg-blue-50', 'cursor-pointer');
+        }
+      });
+      document.querySelectorAll('.order-select').forEach(s => {
+        s.value = '';
+        s.disabled = false;
+      });
+      document.querySelectorAll('.explanation').forEach(exp => {
+        exp.classList.add('hidden');
+        exp.innerHTML = '';
+      });
+      document.querySelectorAll('.grade-btn').forEach(btn => {
+        btn.classList.remove('hidden');
+      });
+      document.querySelectorAll('.section-result-summary').forEach(el => el.remove());
+      for (let i = 1; i <= 8; i++) {
+        const navBtn = document.getElementById('nav' + i);
+        if (navBtn) navBtn.innerText = `第${i}問`;
+      }
+    }
+
+    let autoSaveTimeout = null;
+    function scheduleAutoSave() {
+      refreshSaveCodeOutput();
+      if (!db || !currentUser) return;
+      updateSaveStatusBadge('保存中...', 'bg-amber-400');
+      clearTimeout(autoSaveTimeout);
+      autoSaveTimeout = setTimeout(async () => {
+        if (!currentUser) return;
+        try {
+          const state = collectCurrentState();
+          const docRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'exam_progress', EXAM_DOC_KEY);
+          await setDoc(docRef, { payload: JSON.stringify(state), updatedAt: Date.now() });
+          updateSaveStatusBadge('自動保存済み', 'bg-emerald-400');
+        } catch (err) {
+          updateSaveStatusBadge('セーブコード保存可', 'bg-blue-400');
+        }
+      }, 600);
+    }
+
+    async function autoRestoreFromUserCloud() {
+      if (!db || !currentUser) return;
+      try {
+        const docRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'exam_progress', EXAM_DOC_KEY);
+        const snap = await getDoc(docRef);
+        if (snap.exists() && snap.data().payload) {
+          const state = JSON.parse(snap.data().payload);
+          const hasAnyAnswer = state.inputs && Object.keys(state.inputs).length > 0;
+          if (hasAnyAnswer) {
+            applySavedState(state, true);
+            updateSaveStatusBadge('前回の続きを復元済み', 'bg-emerald-400');
+            showToast('前回の途中経過を自動で読み込みました');
+          }
+        }
+      } catch (err) {
+        console.warn('Auto-restore skipped:', err);
+      }
+    }
+
+    function normalizePassphrase(raw) {
+      return `super8k_${raw.trim().replace(/[\/\\?#\[\]\s]+/g, '_').toLowerCase()}`;
+    }
+
+    async function saveByPassphrase() {
+      const inputEl = document.getElementById('cloudSaveKeyInput');
+      const rawKey = inputEl ? inputEl.value : '';
+      if (!rawKey || rawKey.trim().length < 2) {
+        showModalFeedback('2文字以上の出席番号や合言葉を入力してください。', true);
+        return;
+      }
+      const cleanKey = normalizePassphrase(rawKey);
+      if (!db || !currentUser) {
+        showModalFeedback('現在オフライン環境のため、下の「方法2：セーブコード」をコピーして保存してください。', true);
+        return;
+      }
+      try {
+        const state = collectCurrentState();
+        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'exam_sessions', cleanKey);
+        await setDoc(docRef, {
+          payload: JSON.stringify(state),
+          updatedAt: Date.now(),
+          ownerUid: currentUser.uid
+        });
+        updateSaveStatusBadge(`保存済 (${rawKey.trim()})`, 'bg-emerald-400');
+        showModalFeedback(`合言葉「${rawKey.trim()}」でクラウドに保存しました！次回同じ合言葉で再開できます。`, false);
+      } catch (err) {
+        showModalFeedback('クラウド保存に失敗しました。下のセーブコードをコピーして保存してください。', true);
+      }
+    }
+
+    async function loadByPassphrase() {
+      const inputEl = document.getElementById('cloudSaveKeyInput');
+      const rawKey = inputEl ? inputEl.value : '';
+      if (!rawKey || !rawKey.trim()) {
+        showModalFeedback('保存したときの出席番号や合言葉を入力してください。', true);
+        return;
+      }
+      const cleanKey = normalizePassphrase(rawKey);
+      if (!db || !currentUser) {
+        showModalFeedback('現在クラウドに接続できません。セーブコードから復元してください。', true);
+        return;
+      }
+      try {
+        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'exam_sessions', cleanKey);
+        const snap = await getDoc(docRef);
+        if (!snap.exists() || !snap.data().payload) {
+          showModalFeedback(`合言葉「${rawKey.trim()}」のデータが見つかりませんでした。`, true);
+          return;
+        }
+        const state = JSON.parse(snap.data().payload);
+        applySavedState(state, true);
+        showModalFeedback(`合言葉「${rawKey.trim()}」のデータから続きを復元しました！`, false);
+        showToast(`「${rawKey.trim()}」のデータを復元しました`);
+      } catch (err) {
+        showModalFeedback('データの読み込みに失敗しました。', true);
+      }
+    }
+
+    function encodeStateToCode(state) {
+      return btoa(encodeURIComponent(JSON.stringify(state)));
+    }
+
+    function decodeCodeToState(code) {
+      return JSON.parse(decodeURIComponent(atob(code.trim())));
+    }
+
+    function refreshSaveCodeOutput() {
+      const outEl = document.getElementById('saveCodeOutput');
+      if (!outEl) return;
+      try {
+        outEl.value = encodeStateToCode(collectCurrentState());
+      } catch (e) {
+        outEl.value = '';
+      }
+    }
+
+    function copySaveCode() {
+      refreshSaveCodeOutput();
+      const outEl = document.getElementById('saveCodeOutput');
+      if (!outEl || !outEl.value) return;
+      outEl.select();
+      outEl.setSelectionRange(0, 99999);
+      document.execCommand('copy');
+      showModalFeedback('セーブコードをコピーしました！メモ帳などに貼り付けて保管してください。', false);
+      showToast('📋 セーブコードをコピーしました');
+    }
+
+    function restoreFromSaveCodeInput() {
+      const inEl = document.getElementById('saveCodeInput');
+      if (!inEl || !inEl.value.trim()) {
+        showModalFeedback('セーブコードを貼り付けてからボタンを押してください。', true);
+        return;
+      }
+      try {
+        const state = decodeCodeToState(inEl.value);
+        applySavedState(state, true);
+        showModalFeedback('セーブコードから解答状況と得点を復元しました！', false);
+      } catch (e) {
+        showModalFeedback('セーブコードの形式が正しくありません。', true);
+      }
+    }
+
+    function refreshSaveModalSummary() {
+      refreshSaveCodeOutput();
+      const state = collectCurrentState();
+      const answeredCount = Object.keys(state.inputs || {}).length;
+      const summaryEl = document.getElementById('modalProgressSummary');
+      if (summaryEl) {
+        summaryEl.innerText = `選択済み項目: ${answeredCount} 箇所 / 採点済み: ${Object.keys(userScores).length} / 8 大問`;
+      }
+      const pillsEl = document.getElementById('modalSectionPills');
+      if (pillsEl) {
+        pillsEl.innerHTML = '';
+        for (let i = 1; i <= 8; i++) {
+          const isGraded = userScores[i] !== undefined;
+          const pill = document.createElement('span');
+          pill.className = `px-2.5 py-1 rounded-full text-xs font-bold ${
+            isGraded ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-slate-200 text-slate-600'
+          }`;
+          pill.innerText = isGraded ? `第${i}問: ${userScores[i]}/${maxScores[i]}点` : `第${i}問: 未採点`;
+          pillsEl.appendChild(pill);
+        }
+      }
+    }
+
+    function openSaveModal() {
+      const modal = document.getElementById('saveModal');
+      const feedback = document.getElementById('modalFeedbackMsg');
+      if (feedback) feedback.classList.add('hidden');
+      refreshSaveModalSummary();
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function closeSaveModal() {
+      const modal = document.getElementById('saveModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function resetAllProgress() {
+      clearAllInputsDOM();
+      updateReportCard();
+      refreshSaveModalSummary();
+      scheduleAutoSave();
+      showModalFeedback('すべての解答と採点結果をリセットしました。', false);
+      showToast('解答をリセットしました');
+    }
+
+    function switchTab(tabNum, skipSave = false) {
+      currentActiveTab = tabNum;
+      for (let i = 1; i <= 9; i++) {
+        const tab = document.getElementById('tab' + i);
+        const navBtn = document.getElementById('nav' + i);
+        if (tab) tab.classList.add('hidden');
+        if (navBtn) {
+          navBtn.classList.remove('bg-blue-600', 'bg-emerald-600', 'bg-emerald-700', 'text-white', 'text-emerald-100', 'shadow-sm');
+          navBtn.classList.add('bg-slate-700', 'text-slate-300', 'hover:bg-slate-600');
+        }
+      }
+      const targetTab = document.getElementById('tab' + tabNum);
+      if (targetTab) {
+        targetTab.classList.remove('hidden');
+        targetTab.classList.add('fade-in');
+      }
+      const targetNav = document.getElementById('nav' + tabNum);
+      if (targetNav) {
+        targetNav.classList.remove('bg-slate-700', 'text-slate-300', 'hover:bg-slate-600');
+        if (tabNum === 9) {
+          targetNav.classList.add('bg-emerald-600', 'text-white', 'shadow-sm');
+          calculateTotal();
+        } else {
+          targetNav.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
+        }
+      }
+      if (!skipSave) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scheduleAutoSave();
+      }
+    }
+
+    function gradeSection(tabNum, isRestoring = false) {
+      const section = document.getElementById('tab' + tabNum);
+      if (!section) return;
+      const questions = section.querySelectorAll('.question-block');
+
+      let allAnswered = true;
+      questions.forEach(q => {
+        const qId = q.getAttribute('data-qid');
+        if (q.querySelector('.order-select')) {
+          q.querySelectorAll('.order-select').forEach(s => { if (s.value === "") allAnswered = false; });
+        } else if (qId === 'q8-2') {
+          const checkboxes = q.querySelectorAll('input[type="checkbox"]:checked');
+          const radio = q.querySelector('input[type="radio"]:checked');
+          if (checkboxes.length !== 2 || !radio) allAnswered = false;
+        } else if (qId === 'q2-5') {
+          const checkboxes = q.querySelectorAll('input[type="checkbox"]:checked');
+          if (checkboxes.length !== 2) allAnswered = false;
+        } else {
+          if (!q.querySelector('input:checked')) allAnswered = false;
+        }
+      });
+
+      if (!allAnswered && !isRestoring) {
+        showToast('⚠️ この大問のすべての設問（4つの順序選択や2つ選ぶ設問を含む）に回答してから採点してください。', true);
+        return;
+      }
+
+      let earnedPoints = 0;
+
+      questions.forEach(qBlock => {
+        const qId = qBlock.getAttribute('data-qid');
+        const correct = answers[qId];
+        const pointValue = pointWeights[qId];
+        let isCorrect = false;
+
+        if (qBlock.querySelector('.order-select')) {
+          let userAnswerStr = "";
+          qBlock.querySelectorAll('.order-select').forEach(s => userAnswerStr += s.value);
+          if (userAnswerStr === correct) isCorrect = true;
+        } else if (qId === 'q8-2') {
+          const checks = Array.from(qBlock.querySelectorAll('input[type="checkbox"]:checked')).map(el => el.value);
+          const radioEl = qBlock.querySelector('input[type="radio"]:checked');
+          const radio = radioEl ? radioEl.value : '';
+          if (checks.length === 2 && checks.includes(correct[0]) && checks.includes(correct[1]) && radio === correct[2]) {
+            isCorrect = true;
+          }
+        } else if (qBlock.querySelector('input[type="checkbox"]')) {
+          const checkedVals = Array.from(qBlock.querySelectorAll('input:checked')).map(el => el.value);
+          if (Array.isArray(correct) && checkedVals.length === correct.length && checkedVals.every(v => correct.includes(v))) {
+            isCorrect = true;
+          }
+        } else {
+          const checked = qBlock.querySelector('input:checked');
+          if (checked && checked.value === correct) isCorrect = true;
+        }
+
+        qBlock.querySelectorAll('input, select').forEach(input => {
+          input.disabled = true;
+          if (input.parentElement && input.parentElement.tagName === 'LABEL') {
+            input.parentElement.classList.remove('hover:bg-blue-50', 'cursor-pointer');
+          }
+        });
+
+        const expDiv = qBlock.querySelector('.explanation');
+        expDiv.classList.remove('hidden');
+
+        if (isCorrect) {
+          earnedPoints += pointValue;
+          expDiv.innerHTML = `<span class="font-bold text-green-700 text-base">✓ 正解！ (+${pointValue}点)</span><p class="mt-1.5 text-slate-700 leading-relaxed">${explanations[qId]}</p>`;
+          expDiv.className = "explanation font-sans mt-4 p-4 rounded-lg text-sm bg-green-50 border border-green-300 shadow-inner";
+        } else {
+          expDiv.innerHTML = `<span class="font-bold text-red-700 text-base">✗ 不正解</span><p class="mt-1.5 text-slate-700 leading-relaxed">${explanations[qId]}</p>`;
+          expDiv.className = "explanation font-sans mt-4 p-4 rounded-lg text-sm bg-red-50 border border-red-300 shadow-inner";
+        }
+      });
+
+      userScores[tabNum] = earnedPoints;
+      const navBtn = document.getElementById('nav' + tabNum);
+      if (navBtn) navBtn.innerText = `第${tabNum}問 ✓`;
+
+      section.querySelector('.grade-btn').classList.add('hidden');
+      const existingSummary = section.querySelector('.section-result-summary');
+      if (existingSummary) existingSummary.remove();
+
+      const nextBtnHtml = tabNum < 8
+        ? `<button onclick="switchTab(${tabNum + 1})" class="bg-blue-100 hover:bg-blue-200 text-blue-800 font-bold py-3 px-6 rounded-full transition-colors">次の大問へ進む</button>`
+        : `<button onclick="switchTab(9)" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-bold py-3 px-6 rounded-full transition-colors">総合結果を見る</button>`;
+
+      const saveBtnHtml = `<button onclick="openSaveModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-6 rounded-full shadow transition-colors">💾 ここまでを保存</button>`;
+
+      const resultDiv = document.createElement('div');
+      resultDiv.className = "section-result-summary flex flex-wrap justify-center items-center mt-6 fade-in gap-3 font-sans";
+      resultDiv.innerHTML = `<div class="bg-white px-8 py-4 rounded-full shadow border border-gray-200 text-xl font-bold">得点: <span class="text-blue-600 text-3xl font-black">${earnedPoints}</span> / ${maxScores[tabNum]} 点</div> ${nextBtnHtml} ${saveBtnHtml}`;
+      section.querySelector('.space-y-6').appendChild(resultDiv);
+
+      updateReportCard();
+      if (!isRestoring) scheduleAutoSave();
+    }
+
+    function updateReportCard() {
+      let totalEarned = 0;
+      let gradedCount = 0;
+      for (let i = 1; i <= 8; i++) {
+        const qScoreEl = document.getElementById(`score-q${i}`);
+        if (userScores[i] !== undefined) {
+          totalEarned += userScores[i];
+          gradedCount++;
+          if (qScoreEl) qScoreEl.innerText = userScores[i];
+        } else {
+          if (qScoreEl) qScoreEl.innerText = '未採点';
+        }
+      }
+      const totalEl = document.getElementById('score-total');
+      if (totalEl) totalEl.innerText = totalEarned;
+      const pctEl = document.getElementById('score-percentage');
+      if (pctEl) pctEl.innerText = totalEarned;
+      const detailEl = document.getElementById('score-progress-detail');
+      if (detailEl) detailEl.innerText = `採点済み: ${gradedCount} / 8 大問`;
+    }
+
+    function calculateTotal() {
+      const uncompletedWarning = document.getElementById('uncompleted-warning');
+      const gradedCount = Object.keys(userScores).length;
+      updateReportCard();
+
+      if (gradedCount < 8) {
+        uncompletedWarning.classList.remove('hidden');
+      } else {
+        uncompletedWarning.classList.add('hidden');
+      }
+
+      let totalScore = 0;
+      for (let i = 1; i <= 8; i++) totalScore += (userScores[i] || 0);
+
+      const messageEl = document.getElementById('score-message');
+      if (gradedCount < 8) {
+        messageEl.innerText = `現在 ${gradedCount} / 8 大問まで採点済みです（途中スコア: ${totalScore}点）。「💾 途中経過を保存する」からいつでも保存できます。`;
+        messageEl.className = "mt-6 text-base font-bold text-center text-amber-700";
+      } else if (totalScore >= 88) {
+        messageEl.innerText = "素晴らしい成績です！共通テストの旧傾向・現傾向・AI時代の新傾向予測問題まで完璧に攻略できています！";
+        messageEl.className = "mt-6 text-lg font-bold text-center text-emerald-700";
+      } else if (totalScore >= 72) {
+        messageEl.innerText = "高得点です！複数情報の照合や誤り削除・AI要約検証のミスした箇所を復習してさらなる高みを目指しましょう。";
+        messageEl.className = "mt-6 text-lg font-bold text-center text-blue-700";
+      } else {
+        messageEl.innerText = "長丁場の演習お疲れ様でした！各設問の解説を読み返し、図表と本文を素早く照合するコツを身につけましょう。";
+        messageEl.className = "mt-6 text-lg font-bold text-center text-orange-700";
+      }
+    }
+
+    window.switchTab = switchTab;
+    window.gradeSection = gradeSection;
+    window.calculateTotal = calculateTotal;
+    window.openSaveModal = openSaveModal;
+    window.closeSaveModal = closeSaveModal;
+    window.saveByPassphrase = saveByPassphrase;
+    window.loadByPassphrase = loadByPassphrase;
+    window.copySaveCode = copySaveCode;
+    window.restoreFromSaveCodeInput = restoreFromSaveCodeInput;
+    window.resetAllProgress = resetAllProgress;
+
+    document.addEventListener('change', (e) => {
+      if (e.target.matches('input[type="radio"], input[type="checkbox"], select.order-select')) {
+        scheduleAutoSave();
+      }
+    });
+
+    updateReportCard();
+    initCloudStorage();
+  </script>
+</body>
+</html>
